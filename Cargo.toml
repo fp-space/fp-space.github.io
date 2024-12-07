@@ -1,0 +1,10 @@
+[package]
+name = "mini-note"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+yew = { version = "0.21.0", features = ["csr"] }
+web-sys = "0.3.74"
+console_log = "1.0.0"
+log = { version = "0.4" }
