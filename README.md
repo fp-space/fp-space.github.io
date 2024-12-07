@@ -24,6 +24,7 @@ my_blog_project/
 ├── static/                  # 静态资源目录，存放图片、文件等
 │   ├── assets/              # 其他静态资源，如图标、图片等
 │   └── posts/               # 存放 Markdown 文件的目录
+├── styles/                  # 存放 CSS、JS 文件的目录
 ├── Cargo.toml               # Rust 项目配置文件
 └── README.md                # 项目说明文件
 ```
