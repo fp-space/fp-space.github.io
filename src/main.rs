@@ -1,3 +1,6 @@
+mod markdown;
+mod utils;
+
 use console_log::init_with_level;
 use log::Level;
 use yew::{function_component, html, Html};
