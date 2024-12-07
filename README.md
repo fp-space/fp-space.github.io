@@ -4,6 +4,7 @@ Mini Note
 
 ## 目录结构
 
+```
 目录结构：
 my_blog_project/
 ├── src/
@@ -25,3 +26,4 @@ my_blog_project/
 │   └── posts/               # 存放 Markdown 文件的目录
 ├── Cargo.toml               # Rust 项目配置文件
 └── README.md                # 项目说明文件
+```
