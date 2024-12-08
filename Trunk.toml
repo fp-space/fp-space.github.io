@@ -5,3 +5,9 @@ address = "127.0.0.1"
 # address = "0.0.0.0"
 # The port to serve on.
 port = 8341
+
+[build]
+dist = "dist"  # 这是构建后的输出目录，Trunk 会将静态文件复制到这个目录
+
+[web]
+public_dir = "static"  # 这是静态文件的目录，Trunk 会将 static 目录中的资源复制到 dist 目录

@@ -1,0 +1,14 @@
+/* static/css/styles/custom.css */
+
+/* 自定义的样式 */
+.text-custom {
+    color: #1D4ED8;  /* 自定义蓝色 */
+}
+
+.button-primary {
+    @apply bg-blue-500 text-white py-2 px-4 rounded-lg shadow-md;
+}
+
+.navbar {
+    background-color: #f8fafc;  /* 浅灰色 */
+}
