@@ -6,6 +6,9 @@ use console_log::init_with_level;
 use log::Level;
 use yew::{classes, function_component, html, Html};
 use crate::components::header::Navigation;
+use crate::components::content::MainContent;
+use crate::components::sidebar::Sidebar;
+use crate::components::footer::Footer;
 
 
 // 控制调试模式（是否启用边框）
@@ -23,51 +26,33 @@ fn debug_border() -> &'static str {
 #[function_component]
 fn App() -> Html {
     html! {
+        // 主容器
+        <div class={classes!(
+            "min-h-screen", // 设置最小高度为屏幕高度
+            "flex", // 使用弹性布局
+            "flex-col", // 垂直排列
+            "bg-gray-100", // 背景颜色
+            debug_border()  // 调试用边框
+        )}>
+            <Navigation /> // 导航组件
+
             <div class={classes!(
-                "min-h-screen",
-                "flex",
-                "flex-col",
-                "bg-gray-100",
-                debug_border()  // 使用 debug_border 函数
+                "flex", // 弹性布局
+                "flex-grow", // 占据剩余空间
+                debug_border(),  // 调试用边框
+                "p-4", // 内边距
+                "m-4" // 外边距
             )}>
-                <Navigation />
+                // 主内容部分
+                <MainContent /> // 主要内容组件
 
-                <div class={classes!(
-                    "flex",
-                    "flex-grow",
-                    debug_border(),  // 使用 debug_border 函数
-                    "p-4",
-                    "m-4"
-                )}>
-                    <div class={classes!(
-                        "flex-1",
-                        debug_border(),  // 使用 debug_border 函数
-                        "m-4",
-                        "p-4"
-                    )}>
-                        <h2 class={classes!("text-2xl", "font-bold")}>{"Main Content"}</h2>
-                        <p>{"This is the main content section."}</p>
-                    </div>
-
-                    <div class={classes!(
-                        "w-64",
-                        debug_border(),  // 使用 debug_border 函数
-                        "m-4",
-                        "p-4"
-                    )}>
-                        <h3 class={classes!("text-xl", "font-semibold")}>{"Sidebar"}</h3>
-                        <p>{"This is the sidebar content."}</p>
-                    </div>
-                </div>
-
-                <div class={classes!(
-                    debug_border(),  // 使用 debug_border 函数
-                    "p-4",
-                    "text-center"
-                )}>
-                    <p>{"This is the footer section."}</p>
-                </div>
+                // 侧边栏部分
+                <Sidebar /> // 侧边栏组件
             </div>
+
+            // 页脚部分
+            <Footer /> // 页脚组件
+        </div>
     }
 }
 

@@ -11,3 +11,13 @@ dist = "dist"  # 这是构建后的输出目录，Trunk 会将静态文件复制
 
 [web]
 public_dir = "static"  # 这是静态文件的目录，Trunk 会将 static 目录中的资源复制到 dist 目录
+
+
+
+[watch]
+# 监听 SCSS 文件变化
+include = ["static/**/*.scss", "src/**/*.rs"]
+
+[build.assets]
+source = "static"
+target = "static"

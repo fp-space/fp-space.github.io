@@ -28,3 +28,10 @@ my_blog_project/
 ├── Cargo.toml               # Rust 项目配置文件
 └── README.md                # 项目说明文件
 ```
+
+## css
+引入 twilwind, 使用 @apply，详见styles.scss
+
+```bash
+npx tailwindcss -i ./static/css/styles.scss -o ./static/css/styles.css --watch
+```

@@ -4,6 +4,10 @@
     "tailwindcss": "^3.4.16"
   },
   "dependencies": {
-    "@tailwindcss/forms": "^0.5.9"
+    "@tailwindcss/forms": "^0.5.9",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "sass": "^1.82.0",
+    "yew-styles": "^0.10.3"
   }
 }

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+/* styles.scss */
+@import 'input.css';
+
+
+/* 定义导航栏容器的样式 */
+.nav-container {
+  @apply border-4 border-black p-4 shadow-lg; /* 使用 Tailwind 的类 */
+}
+
+/* 定义导航栏标题的样式 */
+.nav-title {
+  @apply text-4xl font-bold text-gray-800; /* 使用 Tailwind 的类 */
+}
