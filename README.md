@@ -33,5 +33,5 @@ my_blog_project/
 引入 twilwind, 使用 @apply，详见styles.scss
 
 ```bash
-npx tailwindcss -i ./static/css/styles.scss -o ./static/css/styles.css --watch
+npx tailwindcss -i ./styles/css/app.scss -o ./styles/css/app.css --watch
 ```
