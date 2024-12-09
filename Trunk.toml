@@ -16,8 +16,8 @@ public_dir = "static"  # 这是静态文件的目录，Trunk 会将 static 目�
 
 [watch]
 # 监听 SCSS 文件变化
-include = ["static/**/*.scss", "src/**/*.rs"]
+include = ["styles/**/*.scss", "src/**/*.rs"]
 
 [build.assets]
-source = "static"
-target = "static"
+source = "styles"
+target = "styles"

@@ -21,7 +21,7 @@ my_blog_project/
 │   ├── markdown.rs          # 处理 Markdown 文件的加载与渲染
 │   ├── app.css              # 样式文件，包含 Tailwind CSS
 │   └── utils.rs             # 工具函数，可能包括文件加载和异步处理等
-├── static/                  # 静态资源目录，存放图片、文件等
+├── public/                  # 静态资源目录，存放图片、文件等
 │   ├── assets/              # 其他静态资源，如图标、图片等
 │   └── posts/               # 存放 Markdown 文件的目录
 ├── styles/                  # 存放 CSS、JS 文件的目录
