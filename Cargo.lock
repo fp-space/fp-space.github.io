@@ -2495,6 +2495,7 @@ dependencies = [
  "log",
  "tailwind-css",
  "trunk",
+ "wasm-bindgen",
  "web-sys",
  "yew 0.21.0",
  "yew_styles",

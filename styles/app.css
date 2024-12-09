@@ -751,212 +751,16 @@ select{
   outline: 1px auto -webkit-focus-ring-color;
 }
 
-.container{
-  width: 100%;
-}
-
-@media (min-width: 640px){
-  .container{
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px){
-  .container{
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px){
-  .container{
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px){
-  .container{
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px){
-  .container{
-    max-width: 1536px;
-  }
-}
-
-.form-input,.form-textarea,.form-select,.form-multiselect{
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background-color: #fff;
-  border-color: #6b7280;
-  border-width: 1px;
-  border-radius: 0px;
-  padding-top: 0.5rem;
-  padding-right: 0.75rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  --tw-shadow: 0 0 #0000;
-}
-
-.form-input:focus, .form-textarea:focus, .form-select:focus, .form-multiselect:focus{
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-  --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
-  --tw-ring-offset-width: 0px;
-  --tw-ring-offset-color: #fff;
-  --tw-ring-color: #2563eb;
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  border-color: #2563eb;
-}
-
-.form-input::-moz-placeholder, .form-textarea::-moz-placeholder{
-  color: #6b7280;
-  opacity: 1;
-}
-
-.form-input::placeholder,.form-textarea::placeholder{
-  color: #6b7280;
-  opacity: 1;
-}
-
-.form-input::-webkit-datetime-edit-fields-wrapper{
-  padding: 0;
-}
-
-.form-input::-webkit-date-and-time-value{
-  min-height: 1.5em;
-  text-align: inherit;
-}
-
-.form-input::-webkit-datetime-edit{
-  display: inline-flex;
-}
-
-.form-input::-webkit-datetime-edit,.form-input::-webkit-datetime-edit-year-field,.form-input::-webkit-datetime-edit-month-field,.form-input::-webkit-datetime-edit-day-field,.form-input::-webkit-datetime-edit-hour-field,.form-input::-webkit-datetime-edit-minute-field,.form-input::-webkit-datetime-edit-second-field,.form-input::-webkit-datetime-edit-millisecond-field,.form-input::-webkit-datetime-edit-meridiem-field{
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.form-select{
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.5rem center;
-  background-repeat: no-repeat;
-  background-size: 1.5em 1.5em;
-  padding-right: 2.5rem;
-  -webkit-print-color-adjust: exact;
-          print-color-adjust: exact;
-}
-
-.form-select:where([size]:not([size="1"])){
-  background-image: initial;
-  background-position: initial;
-  background-repeat: unset;
-  background-size: initial;
-  padding-right: 0.75rem;
-  -webkit-print-color-adjust: unset;
-          print-color-adjust: unset;
-}
-
 .static{
   position: static;
 }
 
-.fixed{
-  position: fixed;
-}
-
-.absolute{
-  position: absolute;
-}
-
-.relative{
-  position: relative;
-}
-
-.m-4{
-  margin: 1rem;
-}
-
-.block{
-  display: block;
-}
-
-.inline{
-  display: inline;
-}
-
-.flex{
-  display: flex;
+.mb-4{
+  margin-bottom: 1rem;
 }
 
 .hidden{
   display: none;
-}
-
-.min-h-screen{
-  min-height: 100vh;
-}
-
-.w-64{
-  width: 16rem;
-}
-
-.flex-1{
-  flex: 1 1 0%;
-}
-
-.flex-grow{
-  flex-grow: 1;
-}
-
-.transform{
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.flex-col{
-  flex-direction: column;
-}
-
-.border{
-  border-width: 1px;
-}
-
-.border-4{
-  border-width: 4px;
-}
-
-.border-black{
-  --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
-}
-
-.bg-gray-100{
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
-}
-
-.p-4{
-  padding: 1rem;
-}
-
-.text-center{
-  text-align: center;
-}
-
-.text-2xl{
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-.text-4xl{
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 
 .text-xl{
@@ -964,52 +768,190 @@ select{
   line-height: 1.75rem;
 }
 
-.font-bold{
-  font-weight: 700;
-}
-
 .font-semibold{
   font-weight: 600;
 }
 
-.underline{
-  text-decoration-line: underline;
+.text-gray-800{
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
 }
 
-.shadow-lg{
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+/* 全局容器样式 */
+
+.app-container{
+  min-height: 100vh;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.outline{
-  outline-style: solid;
-}
+/* 主内容容器 */
 
-.ease-in-out{
+.main-content-container{
+  margin: 1rem;
+  flex-grow: 1;
+  padding: 1rem;
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  margin-left: 16rem;
+  /* 留出文件树和导航栏的空间 */
+  background-color: #f9f9f9;
+  /* 添加主内容区域的背景色 */
+  transition: margin-left 0.3s ease-in-out;
 }
 
-/* 定义导航栏容器的样式 */
+/* 导航栏样式 */
 
 .nav-container{
-  border-width: 4px;
+  z-index: 10;
+  border-bottom-width: 2px;
   --tw-border-opacity: 1;
-  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
+  border-color: rgb(37 99 235 / var(--tw-border-opacity, 1));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
   padding: 1rem;
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  /* 使用 Tailwind 的类 */
+  position: absolute;
+  /* 使用绝对定位来控制导航栏的位置 */
+  top: 0;
+  left: 16rem;
+  /* 导航栏紧挨着文件树 */
+  width: calc(100% - 16rem);
+  /* 使导航栏占据剩余的宽度 */
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+  /* 动画过渡效果 */
 }
-
-/* 定义导航栏标题的样式 */
 
 .nav-title{
   font-size: 2.25rem;
   line-height: 2.5rem;
   font-weight: 700;
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
-  /* 使用 Tailwind 的类 */
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
+}
+
+/* 侧边栏样式 */
+
+.sidebar{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  height: 100%;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  padding: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  width: 16rem;
+  /* 默认文件树宽度 */
+  transition: width 0.3s ease-in-out;
+  /* 文件树宽度过渡效果 */
+}
+
+/* 鼠标悬停时，文件树变宽 */
+
+.sidebar:hover{
+  width: 18rem;
+  /* 鼠标悬停时扩展文件树宽度 */
+}
+
+/* 文件树样式 */
+
+.file-tree > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
+.file-tree {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.folder{
+  cursor: pointer;
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
+}
+
+.folder:hover{
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity, 1));
+}
+
+.folder {
+  .folder-name{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  .folder-name{
+    font-weight: 600;
+  }
+  .file-list{
+    display: none;
+  }
+  .file-list > :not([hidden]) ~ :not([hidden]){
+    --tw-space-y-reverse: 0;
+    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+  }
+  .file-list{
+    padding-left: 1rem;
+  }
+  .file{
+    cursor: pointer;
+  }
+  .file{
+    --tw-text-opacity: 1;
+    color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+  }
+  .file:hover{
+    --tw-text-opacity: 1;
+    color: rgb(37 99 235 / var(--tw-text-opacity, 1));
+  }
+  /* 文件夹展开时的样式 */
+  &.open .file-list{
+    display: block;
+  }
+  &.open .file-list {
+    transition: max-height 0.3s ease-in-out;
+    max-height: 300px;
+    /* 最大高度，用于折叠/展开 */
+  }
+}
+
+/* 页脚样式 */
+
+.footer{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+  padding: 1rem;
+  text-align: center;
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
+  position: relative;
+  border-top: 1px solid #ddd;
+  margin-top: auto;
+  transition: margin-left 0.3s ease-in-out;
+  /* 页脚随文件树调整 */
+  margin-left: 16rem;
+  /* 页脚的左侧位置与文件树对齐 */
+}
+
+.file-list{
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  height: 0;
+  overflow: hidden;
 }

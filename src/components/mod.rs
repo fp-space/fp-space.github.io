@@ -1,4 +1,3 @@
-pub mod header;
+pub mod navigation;
 pub mod content;
 pub mod sidebar;
-pub mod footer;

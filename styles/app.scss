@@ -1,15 +1,92 @@
 @charset "UTF-8";
 
 /* styles.scss */
-@import 'input.css';
+@import 'tailwind.css';
 
-
-/* 定义导航栏容器的样式 */
-.nav-container {
-  @apply border-4 border-black p-4 shadow-lg; /* 使用 Tailwind 的类 */
+/* 全局容器样式 */
+.app-container {
+  @apply min-h-screen flex flex-col bg-white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-/* 定义导航栏标题的样式 */
+/* 主内容容器 */
+.main-content-container {
+  @apply flex-grow p-4 m-4 transition-all duration-300;
+  margin-left: 16rem; /* 留出文件树和导航栏的空间 */
+  background-color: #f9f9f9; /* 添加主内容区域的背景色 */
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* 导航栏样式 */
+.nav-container {
+  @apply border-b-2 border-blue-600 p-4 shadow-md bg-white z-10;
+  position: absolute; /* 使用绝对定位来控制导航栏的位置 */
+  top: 0;
+  left: 16rem; /* 导航栏紧挨着文件树 */
+  width: calc(100% - 16rem); /* 使导航栏占据剩余的宽度 */
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out; /* 动画过渡效果 */
+}
+
 .nav-title {
-  @apply text-4xl font-bold text-gray-800; /* 使用 Tailwind 的类 */
+  @apply text-4xl font-bold text-blue-600;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+  @apply fixed top-0 left-0 bg-white p-6 text-blue-600 shadow-lg h-full z-10;
+  width: 16rem; /* 默认文件树宽度 */
+  transition: width 0.3s ease-in-out; /* 文件树宽度过渡效果 */
+}
+
+/* 鼠标悬停时，文件树变宽 */
+.sidebar:hover {
+  @apply w-72; /* 鼠标悬停时扩展文件树宽度 */
+}
+
+/* 文件树样式 */
+.file-tree {
+  @apply space-y-2;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.folder {
+  @apply cursor-pointer text-blue-600 hover:text-blue-400;
+
+  .folder-name {
+    @apply font-semibold text-lg;
+  }
+
+  .file-list {
+    @apply pl-4 space-y-1 hidden;
+  }
+
+  .file {
+    @apply text-gray-600 cursor-pointer hover:text-blue-600;
+  }
+
+  /* 文件夹展开时的样式 */
+  &.open .file-list {
+    @apply block;
+    transition: max-height 0.3s ease-in-out;
+    max-height: 300px; /* 最大高度，用于折叠/展开 */
+  }
+}
+
+/* 页脚样式 */
+.footer {
+  @apply bg-white text-blue-600 p-4 text-center;
+  position: relative;
+  border-top: 1px solid #ddd;
+  margin-top: auto;
+  transition: margin-left 0.3s ease-in-out; /* 页脚随文件树调整 */
+  margin-left: 16rem; /* 页脚的左侧位置与文件树对齐 */
+}
+
+.file-list {
+  @apply transition-all duration-300;
+  height: 0;
+  overflow: hidden;
 }
