@@ -25,8 +25,8 @@ pub const NAVMENU: &[NavMenu] = &[
 #[function_component(Navigation)]
 pub fn navigation() -> Html {
     html! {
-       <nav class="bg-stone-100 text-gray-800 py-5 shadow-md">
-            <div class="flex items-center justify-between px-20">
+       <nav class="text-gray-800 py-5 shadow-sm ">
+            <div class="flex items-center justify-between px-10 backdrop-blur-md">
                 // 左侧 Logo/图标部分
                 <a class="flex items-center" href="/">
                     <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
