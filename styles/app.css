@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-/* styles.scss */
-
 *, ::before, ::after{
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -110,7 +108,9 @@
   --tw-contain-style:  ;
 }
 
-/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */
+/*
+! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com
+*/
 
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -751,207 +751,208 @@ select{
   outline: 1px auto -webkit-focus-ring-color;
 }
 
-.static{
-  position: static;
-}
-
 .mb-4{
   margin-bottom: 1rem;
 }
 
-.hidden{
-  display: none;
+.flex{
+  display: flex;
 }
 
-.text-xl{
-  font-size: 1.25rem;
+.h-screen{
+  height: 100vh;
+}
+
+.flex-1{
+  flex: 1 1 0%;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.bg-blue-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gray-100{
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+}
+
+.p-6{
+  padding: 1.5rem;
+}
+
+.px-4{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.text-2xl{
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-lg{
+  font-size: 1.125rem;
   line-height: 1.75rem;
+}
+
+.font-bold{
+  font-weight: 700;
 }
 
 .font-semibold{
   font-weight: 600;
 }
 
-.text-gray-800{
+.text-white{
   --tw-text-opacity: 1;
-  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
-/* 全局容器样式 */
-
-.app-container{
-  min-height: 100vh;
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-/* 主内容容器 */
-
-.main-content-container{
-  margin: 1rem;
-  flex-grow: 1;
-  padding: 1rem;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-  margin-left: 16rem;
-  /* 留出文件树和导航栏的空间 */
-  background-color: #f9f9f9;
-  /* 添加主内容区域的背景色 */
-  transition: margin-left 0.3s ease-in-out;
-}
-
-/* 导航栏样式 */
-
-.nav-container{
-  z-index: 10;
-  border-bottom-width: 2px;
-  --tw-border-opacity: 1;
-  border-color: rgb(37 99 235 / var(--tw-border-opacity, 1));
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-  padding: 1rem;
+.shadow-md{
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  position: absolute;
-  /* 使用绝对定位来控制导航栏的位置 */
-  top: 0;
-  left: 16rem;
-  /* 导航栏紧挨着文件树 */
-  width: calc(100% - 16rem);
-  /* 使导航栏占据剩余的宽度 */
-  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
-  /* 动画过渡效果 */
 }
 
-.nav-title{
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  font-weight: 700;
-  --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
-}
-
-/* 侧边栏样式 */
+/* Sidebar 样式 */
 
 .sidebar{
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 10;
+  display: flex;
   height: 100%;
+  width: 16rem;
+  flex-direction: column;
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
-  padding: 1.5rem;
-  --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1));
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  width: 16rem;
-  /* 默认文件树宽度 */
-  transition: width 0.3s ease-in-out;
-  /* 文件树宽度过渡效果 */
 }
 
-/* 鼠标悬停时，文件树变宽 */
+.sidebar-tabs{
+  display: flex;
+  border-bottom-width: 1px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
 
-.sidebar:hover{
-  width: 18rem;
-  /* 鼠标悬停时扩展文件树宽度 */
+.sidebar-tab{
+  flex: 1 1 0%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  text-align: left;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+}
+
+.sidebar-tab.active{
+  border-bottom-width: 2px;
+  --tw-border-opacity: 1;
+  border-color: rgb(37 99 235 / var(--tw-border-opacity, 1));
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
+}
+
+/* 搜索框样式 */
+
+.sidebar-search{
+  padding: 1rem;
+}
+
+.search-container{
+  position: relative;
+}
+
+.search-input{
+  width: 100%;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
+  padding: 0.5rem;
+  padding-right: 2.5rem;
+}
+
+.search-input:focus{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity, 1));
+}
+
+.search-icon{
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  height: 1.25rem;
+  width: 1.25rem;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 
 /* 文件树样式 */
 
-.file-tree > :not([hidden]) ~ :not([hidden]){
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
-}
-
-.file-tree {
-  max-height: 90vh;
+.sidebar-content{
+  flex: 1 1 0%;
   overflow-y: auto;
-}
-
-.folder{
-  cursor: pointer;
-  --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
-}
-
-.folder:hover{
-  --tw-text-opacity: 1;
-  color: rgb(96 165 250 / var(--tw-text-opacity, 1));
-}
-
-.folder {
-  .folder-name{
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-  .folder-name{
-    font-weight: 600;
-  }
-  .file-list{
-    display: none;
-  }
-  .file-list > :not([hidden]) ~ :not([hidden]){
-    --tw-space-y-reverse: 0;
-    margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
-    margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
-  }
-  .file-list{
-    padding-left: 1rem;
-  }
-  .file{
-    cursor: pointer;
-  }
-  .file{
-    --tw-text-opacity: 1;
-    color: rgb(75 85 99 / var(--tw-text-opacity, 1));
-  }
-  .file:hover{
-    --tw-text-opacity: 1;
-    color: rgb(37 99 235 / var(--tw-text-opacity, 1));
-  }
-  /* 文件夹展开时的样式 */
-  &.open .file-list{
-    display: block;
-  }
-  &.open .file-list {
-    transition: max-height 0.3s ease-in-out;
-    max-height: 300px;
-    /* 最大高度，用于折叠/展开 */
-  }
-}
-
-/* 页脚样式 */
-
-.footer{
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
   padding: 1rem;
-  text-align: center;
-  --tw-text-opacity: 1;
-  color: rgb(37 99 235 / var(--tw-text-opacity, 1));
-  position: relative;
-  border-top: 1px solid #ddd;
-  margin-top: auto;
-  transition: margin-left 0.3s ease-in-out;
-  /* 页脚随文件树调整 */
-  margin-left: 16rem;
-  /* 页脚的左侧位置与文件树对齐 */
 }
 
-.file-list{
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-  height: 0;
-  overflow: hidden;
+.file-node{
+  margin-bottom: 0.5rem;
+}
+
+.file-node-header{
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+
+.folder-icon{
+  margin-right: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
+
+.folder-icon.open{
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
+
+.file-icon{
+  margin-right: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
+}
+
+.file-node-name{
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity, 1));
+}
+
+.file-node-children{
+  margin-left: 1rem;
 }

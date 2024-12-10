@@ -1,92 +1,69 @@
 @charset "UTF-8";
-
-/* styles.scss */
 @import 'tailwind.css';
 
-/* 全局容器样式 */
-.app-container {
-  @apply min-h-screen flex flex-col bg-white;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-/* 主内容容器 */
-.main-content-container {
-  @apply flex-grow p-4 m-4 transition-all duration-300;
-  margin-left: 16rem; /* 留出文件树和导航栏的空间 */
-  background-color: #f9f9f9; /* 添加主内容区域的背景色 */
-  transition: margin-left 0.3s ease-in-out;
-}
-
-/* 导航栏样式 */
-.nav-container {
-  @apply border-b-2 border-blue-600 p-4 shadow-md bg-white z-10;
-  position: absolute; /* 使用绝对定位来控制导航栏的位置 */
-  top: 0;
-  left: 16rem; /* 导航栏紧挨着文件树 */
-  width: calc(100% - 16rem); /* 使导航栏占据剩余的宽度 */
-  transition: width 0.3s ease-in-out, left 0.3s ease-in-out; /* 动画过渡效果 */
-}
-
-.nav-title {
-  @apply text-4xl font-bold text-blue-600;
-}
-
-/* 侧边栏样式 */
+/* Sidebar 样式 */
 .sidebar {
-  @apply fixed top-0 left-0 bg-white p-6 text-blue-600 shadow-lg h-full z-10;
-  width: 16rem; /* 默认文件树宽度 */
-  transition: width 0.3s ease-in-out; /* 文件树宽度过渡效果 */
+  @apply w-64 bg-gray-50 shadow-lg h-full flex flex-col;
 }
 
-/* 鼠标悬停时，文件树变宽 */
-.sidebar:hover {
-  @apply w-72; /* 鼠标悬停时扩展文件树宽度 */
+.sidebar-tabs {
+  @apply flex border-b px-4 py-2;
+}
+
+.sidebar-tab {
+  @apply text-gray-500 font-semibold px-4 py-1 flex-1 text-left;
+}
+
+.sidebar-tab.active {
+  @apply text-blue-600 border-b-2 border-blue-600;
+}
+
+/* 搜索框样式 */
+.sidebar-search {
+  @apply p-4;
+}
+
+.search-container {
+  @apply relative;
+}
+
+.search-input {
+  @apply w-full p-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.search-icon {
+  @apply absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400;
 }
 
 /* 文件树样式 */
-.file-tree {
-  @apply space-y-2;
-  max-height: 90vh;
-  overflow-y: auto;
+.sidebar-content {
+  @apply p-4 overflow-y-auto flex-1;
 }
 
-.folder {
-  @apply cursor-pointer text-blue-600 hover:text-blue-400;
-
-  .folder-name {
-    @apply font-semibold text-lg;
-  }
-
-  .file-list {
-    @apply pl-4 space-y-1 hidden;
-  }
-
-  .file {
-    @apply text-gray-600 cursor-pointer hover:text-blue-600;
-  }
-
-  /* 文件夹展开时的样式 */
-  &.open .file-list {
-    @apply block;
-    transition: max-height 0.3s ease-in-out;
-    max-height: 300px; /* 最大高度，用于折叠/展开 */
-  }
+.file-node {
+  @apply mb-2;
 }
 
-/* 页脚样式 */
-.footer {
-  @apply bg-white text-blue-600 p-4 text-center;
-  position: relative;
-  border-top: 1px solid #ddd;
-  margin-top: auto;
-  transition: margin-left 0.3s ease-in-out; /* 页脚随文件树调整 */
-  margin-left: 16rem; /* 页脚的左侧位置与文件树对齐 */
+.file-node-header {
+  @apply flex items-center cursor-pointer;
 }
 
-.file-list {
-  @apply transition-all duration-300;
-  height: 0;
-  overflow: hidden;
+.folder-icon {
+  @apply w-4 h-4 text-gray-600 mr-2;
+}
+
+.folder-icon.open {
+  @apply text-gray-600;
+}
+
+.file-icon {
+  @apply w-4 h-4 text-gray-400 mr-2;
+}
+
+.file-node-name {
+  @apply text-gray-800;
+}
+
+.file-node-children {
+  @apply ml-4;
 }

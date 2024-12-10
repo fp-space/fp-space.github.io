@@ -1,6 +1,7 @@
 mod markdown;
 mod utils;
 mod components;
+mod model;
 
 use crate::components::content::MainContent;
 use crate::components::navigation::Navigation;
@@ -12,21 +13,23 @@ use yew::{function_component, html, Html};
 #[function_component(App)]
 fn app() -> Html {
     html! {
-        // 主容器
-        <div class="app-container">
-            <Navigation /> // 导航组件
+        <div class="flex h-screen">
+            // 左侧侧边栏
+            <Sidebar />
 
-            <div class="main-content-container">
-
-                // 侧边栏部分
-                <Sidebar /> // 侧边栏组件
+            // 主内容区域
+            <div class="flex flex-col flex-1">
+                // 顶部导航栏
+                <Navigation />
 
                 // 主内容部分
-                <MainContent /> // 主要内容组件
+                <MainContent />
             </div>
         </div>
     }
 }
+
+
 fn main() {
     // 初始化日志
     init_with_level(Level::Info).expect("failed to initialize logger");
