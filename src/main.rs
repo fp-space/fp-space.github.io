@@ -1,7 +1,6 @@
 mod markdown;
 mod utils;
 mod components;
-mod model;
 
 use crate::components::content::MainContent;
 use crate::components::navigation::Navigation;

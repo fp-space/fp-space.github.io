@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+/* Sidebar 样式 */
+.sidebar {
+  @apply w-64 bg-gray-50 shadow-lg h-full flex flex-col;
+}
+
+.sidebar-tabs {
+  @apply flex border-b px-4 py-2;
+}
+
+.sidebar-tab {
+  @apply text-gray-500 font-semibold px-4 py-1 flex-1 text-left;
+}
+
+.sidebar-tab.active {
+  @apply text-blue-600 border-b-2 border-blue-600;
+}
+
+/* 搜索框样式 */
+.sidebar-search {
+  @apply p-4;
+}
+
+.search-container {
+  @apply relative;
+}
+
+.search-input {
+  @apply w-full p-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.search-icon {
+  @apply absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400;
+}
+
+/* 文件树样式 */
+.sidebar-content {
+  @apply p-4 overflow-y-auto flex-1;
+  max-height: calc(100vh - 160px); /* 限制最大高度，避免与其他部分重叠 */
+}
+.file-node {
+  @apply mb-2;
+}
+
+.file-node-header {
+  @apply flex items-center cursor-pointer;
+}
+
+.folder-icon {
+  @apply w-4 h-4 text-gray-600 mr-2;
+}
+
+.folder-icon.open {
+  @apply text-gray-600;
+}
+
+.file-icon {
+  @apply w-4 h-4 text-gray-400 mr-2;
+}
+
+/* 文件夹展开内容 */
+.file-node-name {
+  @apply text-gray-800;
+  @apply break-words; /* 使文本自动换行 */
+}
+
+.file-node-children {
+  @apply ml-4;
+  @apply max-h-96; /* 限制展开内容的最大高度 */
+  @apply overflow-y-auto; /* 启用垂直滚动 */
+}

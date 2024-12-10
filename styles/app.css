@@ -751,12 +751,44 @@ select{
   outline: 1px auto -webkit-focus-ring-color;
 }
 
+.visible{
+  visibility: visible;
+}
+
+.collapse{
+  visibility: collapse;
+}
+
+.absolute{
+  position: absolute;
+}
+
+.relative{
+  position: relative;
+}
+
 .mb-4{
   margin-bottom: 1rem;
 }
 
+.block{
+  display: block;
+}
+
 .flex{
   display: flex;
+}
+
+.table{
+  display: table;
+}
+
+.contents{
+  display: contents;
+}
+
+.hidden{
+  display: none;
 }
 
 .h-screen{
@@ -767,8 +799,28 @@ select{
   flex: 1 1 0%;
 }
 
+.flex-shrink{
+  flex-shrink: 1;
+}
+
+.border-collapse{
+  border-collapse: collapse;
+}
+
+.transform{
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.resize{
+  resize: both;
+}
+
 .flex-col{
   flex-direction: column;
+}
+
+.border{
+  border-width: 1px;
 }
 
 .bg-blue-600{
@@ -818,10 +870,18 @@ select{
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.underline{
+  text-decoration-line: underline;
+}
+
 .shadow-md{
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.outline{
+  outline-style: solid;
 }
 
 /* Sidebar 样式 */
@@ -915,6 +975,8 @@ select{
   flex: 1 1 0%;
   overflow-y: auto;
   padding: 1rem;
+  max-height: calc(100vh - 160px);
+  /* 限制最大高度，避免与其他部分重叠 */
 }
 
 .file-node{
@@ -948,11 +1010,21 @@ select{
   color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 
+/* 文件夹展开内容 */
+
 .file-node-name{
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity, 1));
+  overflow-wrap: break-word;
+  /* 使文本自动换行 */
 }
 
 .file-node-children{
   margin-left: 1rem;
+  max-height: 24rem;
+  /* 限制展开内容的最大高度 */
+  overflow-y: auto;
+  /* 启用垂直滚动 */
 }
+
+/* 引入 sidebar 样式 */
