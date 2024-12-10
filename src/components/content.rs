@@ -5,7 +5,7 @@ use yew::prelude::*;
 #[function_component(MainContent)]
 pub fn main_content() -> Html {
     html! {
-        <div class="px-40 py-10 ">
+        <div class="px-40 py-10">
             <article class="prose max-w-none">
                 <h1> {"Garlic bread with cheese: What the science tells us"} </h1>
                 <p>
