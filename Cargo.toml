@@ -5,11 +5,28 @@ edition = "2021"
 
 [dependencies]
 yew = { version = "0.21.0", features = ["csr"] }
-web-sys = "0.3.74"
 console_log = "1.0.0"
-log = { version = "0.4" }
+log = { version = "0.4.22" }
 yew_styles = "0.11.0"
 tailwind-css = "0.13.0"
 trunk = "0.21.4"
-wasm-bindgen = "0.2.97"
-material-yew = "0.3.0"
+wasm-bindgen = "0.2.99"
+lazy_static = "1.4"
+serde_json = "1.0.133"
+wasm-bindgen-futures = "0.4.49"
+gloo-net = "0.6.0"
+js-sys = "0.3.76"
+web-sys = { version = "0.3.76"}
+serde = { version = "1.0.216", features = ["derive"] }
+walkdir = "2.5.0"
+chrono = "0.4.39"
+once_cell = "1.20.2"
+serde-wasm-bindgen = "0.6.5"
+## 定义多个二进制目标
+[[bin]]
+name = "generate"
+path = "src/generate.rs"
+
+[[bin]]
+name = "main"
+path = "src/main.rs"

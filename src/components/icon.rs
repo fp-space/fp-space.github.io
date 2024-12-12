@@ -9,35 +9,36 @@ pub struct FolderIconProps {
 pub fn folder_icon(props: &FolderIconProps) -> Html {
     // 根据 `used` 状态生成类名
     let class_name = if props.used {
-        "folder-icon open"
+        "folder-icon open text-yellow-500 text-xl"
     } else {
-        "folder-icon"
+        "folder-icon text-gray-500 text-xl"
     };
 
     html! {
-        <svg class={class_name} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <span class={class_name}>
             {
                 if props.used {
                     html! {
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6" /> // 向下箭头
+                        <i class="fas fa-folder-open"></i>  // 用 Font Awesome 图标代替
                     }
                 } else {
                     html! {
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 6l6 6-6 6" /> // 向右箭头
+                        <i class="fas fa-folder"></i>  // 用 Font Awesome 图标代替
                     }
                 }
             }
-        </svg>
+        </span>
     }
 }
+
 
 
 #[function_component(FileIcon)]
 pub fn file_icon() -> Html {
     html! {
-        <svg class="file-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-        </svg>
+        <span class="file-icon text-gray-500 text-xl">
+            <i class="fas fa-file"></i> // 使用 Font Awesome 的文件图标
+        </span>
     }
 }
 

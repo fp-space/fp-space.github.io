@@ -2,71 +2,160 @@
 
 /* Sidebar 样式 */
 .sidebar {
-  @apply w-64 bg-gray-50 shadow-lg h-full flex flex-col;
+  @apply w-64 bg-gray-50 shadow-lg h-screen flex flex-col; /* 填充整个视口 */
+  overflow: hidden; /* 防止横向滚动 */
 }
 
+/* 顶部 Tabs 样式 */
 .sidebar-tabs {
-  @apply flex border-b px-4 py-2;
+  @apply flex border-b bg-white shadow-md px-4 py-2; /* 顶部选项卡样式 */
 }
 
 .sidebar-tab {
-  @apply text-gray-500 font-semibold px-4 py-1 flex-1 text-left;
+  @apply relative text-gray-500 font-semibold px-4 py-1 flex-1 text-center cursor-pointer;
+  overflow: hidden; /* 防止下划线超出容器 */
 }
 
-.sidebar-tab.active {
-  @apply text-blue-600 border-b-2 border-blue-600;
+.sidebar-tab::after {
+  content: "";
+  @apply absolute left-0 bottom-0 h-1;
+  width: 100%; /* 初始状态为全宽 */
+  transform: scaleX(0); /* 初始缩放为 0 */
+  transform-origin: left; /* 动画从左到右展开 */
+  transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out; /* 添加颜色的平滑过渡 */
+  opacity: 0; /* 初始透明 */
+  background-color: gray; /* 默认下划线颜色 */
 }
 
-/* 搜索框样式 */
+.sidebar-tab.active::after {
+  transform: scaleX(1); /* 激活状态下展开至全宽 */
+  opacity: 1; /* 显示下划线 */
+  background-color: blue; /* 激活状态下划线颜色 */
+}
+
+.sidebar-tab:hover::after {
+  transform: scaleX(1); /* 鼠标悬停时也显示下划线 */
+  opacity: 1; /* 保证悬停效果 */
+  background-color: lightblue; /* 鼠标悬停下划线颜色 */
+}
+
+
+/* 搜索框 */
 .sidebar-search {
-  @apply p-4;
+  @apply px-4 py-2 bg-white border-b; /* 搜索框样式 */
 }
 
-.search-container {
-  @apply relative;
-}
-
-.search-input {
-  @apply w-full p-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500;
-}
-
-.search-icon {
-  @apply absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400;
-}
-
-/* 文件树样式 */
+/* 滚动区域 */
 .sidebar-content {
-  @apply p-4 overflow-y-auto flex-1;
-  max-height: calc(100vh - 160px); /* 限制最大高度，避免与其他部分重叠 */
+  @apply flex-1 overflow-y-auto; /* 启用垂直滚动 */
+  overflow-x: hidden; /* 禁止水平滚动 */
+  height: calc(100vh - 112px); /* 减去 Tabs 和搜索框的高度 */
+  padding-right: 0.5rem; /* 为垂直滚动条留出空间 */
+  padding-bottom: 1rem; /* 增加底部间距 */
 }
+
+/* 文件树视图容器：禁用滚动逻辑 */
+.sidebar-view {
+  @apply flex-1 relative;
+  overflow: hidden; /* 禁止滚动条，所有滚动由父级控制 */
+}
+
+
+/* Tab 内容基础样式 */
+.tab-content {
+  @apply absolute top-0 left-0 w-full h-full opacity-0 pointer-events-none; /* 默认隐藏 */
+  transition: opacity 0.3s ease-in-out; /* 平滑切换过渡 */
+}
+
+/* 激活状态的 Tab 内容 */
+.tab-content.active {
+  @apply opacity-100 pointer-events-auto; /* 显示激活内容，允许交互 */
+}
+
+
+
+/* 文件树 */
 .file-node {
   @apply mb-2;
 }
 
 .file-node-header {
-  @apply flex items-center cursor-pointer;
+  @apply flex items-center py-1 cursor-pointer; /* 使用 flex 布局并增加点击区域 */
 }
 
+.file-icon,
 .folder-icon {
-  @apply w-4 h-4 text-gray-600 mr-2;
+  @apply inline-flex w-4 h-4 mr-2; /* 固定图标大小并保持与文字间距 */
 }
 
 .folder-icon.open {
-  @apply text-gray-600;
+  @apply text-gray-600; /* 文件夹展开后的样式 */
 }
 
-.file-icon {
-  @apply w-4 h-4 text-gray-400 mr-2;
-}
-
-/* 文件夹展开内容 */
 .file-node-name {
-  @apply text-gray-800;
-  @apply break-words; /* 使文本自动换行 */
+  @apply text-gray-800; /* 设置文字颜色 */
+  line-height: 1.25rem; /* 确保行高与图标高度一致 */
+  vertical-align: middle; /* 垂直居中 */
 }
 
 .file-node-children {
-  @apply ml-4;
-  @apply max-h-96; /* 限制展开内容的最大高度 */
-  @apply overflow-y-auto; /* 启用垂直滚动 */
+  @apply ml-4; /* 子节点缩进 */
+  overflow: visible; /* 确保子节点完整显示 */
+  max-width: calc(100% - 1rem); /* 防止内容宽度超出父容器 */
+}
+
+/* 搜索结果整体列表样式 */
+.search-results-list {
+  @apply list-none p-0 m-0; /* 无列表样式，内外边距清零 */
+  border-top: 1px solid #ddd; /* 顶部水平线 */
+  border-bottom: 1px solid #ddd; /* 底部水平线 */
+}
+
+.search-result-item {
+  @apply block py-2 border-b border-gray-200; /* 每项之间的水平线 */
+}
+
+.search-result-item:last-child {
+  @apply border-b-0; /* 最后一项无底部线 */
+}
+
+/* 文件标题和匹配条数的容器 */
+.result-header {
+  @apply flex items-center cursor-pointer; /* 文件标题可点击 */
+  font-size: 14px; /* 调整字体大小更贴近图片 */
+  font-weight: bold; /* 文件名加粗 */
+  color: #333; /* 文件名颜色 */
+  margin-bottom: 8px; /* 文件名和具体匹配内容的间距 */
+}
+
+/* 展开/收起图标 */
+.toggle-icon {
+  @apply text-sm mr-2 flex-shrink-0 text-gray-600; /* 图标大小及颜色 */
+}
+
+/* 匹配条数 */
+.result-count {
+  @apply ml-auto text-sm text-gray-500; /* 匹配条数右对齐 */
+}
+
+/* 匹配的具体内容的列表 */
+.result-lines {
+  @apply list-none p-0 m-0 mt-2; /* 无列表样式，顶部有间距 */
+}
+
+.result-line {
+  @apply flex items-center text-sm text-gray-700 mb-2; /* 每行匹配内容的样式 */
+}
+
+/* 行号样式 */
+.line-number {
+  @apply text-xs text-gray-400 mr-2 flex-shrink-0; /* 行号样式 */
+}
+
+/* 内容样式 */
+.line-content.ellipsis {
+  white-space: nowrap; /* 单行显示 */
+  overflow: hidden; /* 超出部分隐藏 */
+  text-overflow: ellipsis; /* 显示省略号 */
+  @apply text-gray-800; /* 内容颜色 */
 }
