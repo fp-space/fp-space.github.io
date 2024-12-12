@@ -35,3 +35,8 @@ my_blog_project/
 ```bash
 npx tailwindcss -i ./styles/app.scss -o ./styles/app.css --watch
 ```
+
+## 文件树
+```bash
+cargo run --bin generate
+```
