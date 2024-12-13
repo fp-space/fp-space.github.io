@@ -40,3 +40,13 @@ npx tailwindcss -i ./styles/app.scss -o ./styles/app.css --watch
 ```bash
 cargo run --bin generate
 ```
+
+## 问题
+
+### v 0.0.1
+1. 文件树样式
+2. 文件被选中后，需要记录下来，下次默认打开上一次文件
+3. 大纲的目录
+4. md 文件渲染问题
+5. 导航栏问题
+6. 去掉搜索框
