@@ -2546,6 +2546,7 @@ name = "mini-note"
 version = "0.1.0"
 dependencies = [
  "chrono",
+ "console",
  "console_log",
  "gloo-net 0.6.0",
  "js-sys",
