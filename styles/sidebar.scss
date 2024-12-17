@@ -1,18 +1,38 @@
 @charset "UTF-8";
 
+.app-container {
+  @apply flex h-screen
+}
+
+.app-container-sidebar {
+  @apply w-64 overflow-y-auto flex flex-col bg-gray
+}
+
+.main-content {
+  @apply flex flex-col flex-1
+}
+
+.main-content-navbar {
+  @apply shadow-lg flex items-center px-4
+}
+
+.main-content-area {
+  @apply flex-1 overflow-y-auto p-6
+}
+
 /* Sidebar 样式 */
 .sidebar {
-  @apply w-64 bg-gray-50 shadow-lg h-screen flex flex-col; /* 填充整个视口 */
+  @apply h-screen flex flex-col text-gray-800 py-5; /* 填充整个视口 */
   overflow: hidden; /* 防止横向滚动 */
 }
 
 /* 顶部 Tabs 样式 */
 .sidebar-tabs {
-  @apply flex border-b bg-white shadow-md px-4 py-2; /* 顶部选项卡样式 */
+  @apply flex border-b shadow-md px-4 py-2; /* 顶部选项卡样式 */
 }
 
 .sidebar-tab {
-  @apply relative text-gray-500 font-semibold px-4 py-1 flex-1 text-center cursor-pointer;
+  @apply relative text-gray-800 font-semibold px-4 py-1 flex-1 text-center cursor-pointer;
   overflow: hidden; /* 防止下划线超出容器 */
 }
 
