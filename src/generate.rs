@@ -32,6 +32,7 @@ fn generate_file_tree(dir: &str, exclude_dirs: Vec<&str>, include_files: Vec<&st
         file_type: "folder".to_string(),
         create_time: get_metadata_time(&root_path, true),
         modify_time: get_metadata_time(&root_path, false),
+        is_expanded: false
     };
 
     // 递归遍历目录
@@ -60,6 +61,7 @@ fn generate_file_tree(dir: &str, exclude_dirs: Vec<&str>, include_files: Vec<&st
                 file_type: file_extension,
                 create_time: get_metadata_time(&path, true),
                 modify_time: get_metadata_time(&path, false),
+                is_expanded: false
             };
 
             root_node.children.as_mut().unwrap().push(file_node);
