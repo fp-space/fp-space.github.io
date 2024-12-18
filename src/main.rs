@@ -1,7 +1,7 @@
-mod markdown;
-mod utils;
 mod components;
+mod markdown;
 mod model;
+mod utils;
 
 use crate::components::content::MainContent;
 use crate::components::navigation::Navigation;
@@ -27,15 +27,13 @@ fn app() -> Html {
                 </div>
 
                 // 主内容部分
-                <div class="flex-1 overflow-y-auto p-6">
+                <div class="flex-1 overflow-y-auto p-6 flex justify-center">
                     <MainContent />
                 </div>
             </div>
         </div>
     }
 }
-
-
 
 fn main() {
     // Initialize logging for WASM

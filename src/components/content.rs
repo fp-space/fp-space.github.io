@@ -10,6 +10,8 @@ const MARKDOWN_SOURCE: &str =
 #[function_component(MainContent)]
 pub fn main_content() -> Html {
     html! {
-        <Markdown src={MARKDOWN_SOURCE}/>
+        <article class="prose lg:prose-xl">
+            <Markdown src={MARKDOWN_SOURCE}/>
+        </article>
     }
 }
