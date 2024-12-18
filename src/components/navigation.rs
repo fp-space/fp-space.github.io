@@ -25,7 +25,7 @@ pub const NAVMENU: &[NavMenu] = &[
 #[function_component(Navigation)]
 pub fn navigation() -> Html {
     html! {
-       <nav class="text-gray-800 py-5 shadow-sm ">
+       <nav class="text-gray-800 py-5 shadow-sm w-full">
             <div class="flex items-center justify-between px-10 backdrop-blur-md">
                 // 左侧 Logo/图标部分
                 <a class="flex items-center" href="/">
