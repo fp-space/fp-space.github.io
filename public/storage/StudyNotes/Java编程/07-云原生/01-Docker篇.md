@@ -12,7 +12,7 @@
 
 Docker 的主要目标是“Build，Ship and Run Any App，Anywhere”，也就是通过对应用组件的封装、分发、部署、运行等生命周期的管理，使用户的APP（可以是一个WEB应用或数据库应用等等）及其运行环境能够做到“**一次镜像，处处运行**”。
 
-![image-20221214135257496](assets/01-Docker篇/image-20221214135257496-16795325330421.png)
+![image-20221214135257496](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214135257496-16795325330421.png)
 
 **Linux容器技术的出现就解决了这样一个问题，而 Docker 就是在它的基础上发展过来的。**将应用打成镜像，通过镜像成为运行在Docker容器上面的实例，而 Docker容器在任何操作系统上都是一致的，这就实现了跨平台、跨服务器。**只需要一次配置好环境，换到别的机子上就可以一键部署好，大大简化了操作。**
 
@@ -24,7 +24,7 @@ Docker的出现使得Docker得以打破过去「程序即应用」的观念。�
 
 **一句话，解决了运行环境和配置问题的软件容器，方便做持续集成并有助于整体发布的容器虚拟化技术。**
 
-![image-20221214133715881](assets/01-Docker篇/image-20221214133715881-16795325330422.png)
+![image-20221214133715881](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214133715881-16795325330422.png)
 
 #### 容器与虚拟机比较
 
@@ -38,7 +38,7 @@ Docker的出现使得Docker得以打破过去「程序即应用」的观念。�
 
 传统虚拟机技术基于安装在主操作系统上的虚拟机管理系统(如: VirtualBox和VMWare等)，创建虚拟机(虚拟出各种硬件)，在虚拟机上安装从操作系统，在从操作系统中安装部署各种应用。
 
-![image-20221214141751745](assets/01-Docker篇/image-20221214141751745-16795325330423.png)
+![image-20221214141751745](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214141751745-16795325330423.png)
 
 虚拟机的缺点：资源占用多、冗余步骤多、启动慢
 
@@ -50,13 +50,13 @@ Linux容器是与系统其他部分隔离开的一系列进程，从另一个镜
 
 **Linux 容器不是模拟一个完整的操作系统**而是对进程进行隔离。有了容器，就可以将软件运行所需的所有资源打包到一个隔离的容器中。**容器与虚拟机不同，不需要捆绑一整套操作系统**，只需要软件工作所需的库资源和设置。系统因此而变得高效轻量并保证部署在任何环境中的软件都能始终如一地运行。
 
-![image-20221214141919239](assets/01-Docker篇/image-20221214141919239-16795325330424.png)
+![image-20221214141919239](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214141919239-16795325330424.png)
 
 Docker容器是在操作系统层面上实现虚拟化，直接复用本地主机的操作系统，而传统虚拟机则是在硬件层面实现虚拟化。与传统的虚拟机相比，Docker优势体现为启动速度快、占用体积小。
 
 ##### 对比
 
-![image-20221214142056947](assets/01-Docker篇/image-20221214142056947-16795325330425.png)
+![image-20221214142056947](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214142056947-16795325330425.png)
 
 比较了 Docker 和传统虚拟化方式的不同之处：
 
@@ -67,7 +67,7 @@ Docker容器是在操作系统层面上实现虚拟化，直接复用本地主�
 
 Docker借鉴了标准集装箱的概念。标准集装箱将货物运往世界各地，Docker将这个模型运用到自己的设计中，唯一不同的是：集装箱运输货物，而Docker运输软件。
 
-![image-20221214142357756](assets/01-Docker篇/image-20221214142357756-16795325330426.png)
+![image-20221214142357756](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214142357756-16795325330426.png)
 
 #### Docker的特点
 
@@ -101,7 +101,7 @@ Docker 镜像（Image）可以用来创建 Docker 容器，一个镜像可以创
 - 相当于是一个root文件系统。比如官方镜像 centos:7 就包含了完整的一套 centos:7 最小系统的 root 文件系统。
 - 相当于容器的“源代码”，docker镜像文件类似于Java的类模板，而docker容器实例类似于java中new出来的实例对象。
 
-![image-20221214145944794](assets/01-Docker篇/image-20221214145944794-16795325330427.png)
+![image-20221214145944794](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214145944794-16795325330427.png)
 
 ##### 容器
 
@@ -122,7 +122,7 @@ Docker 利用容器（Container）是用镜像创建的运行实例。
 
 ##### Docker 架构图
 
-![image-20221214150155349](assets/01-Docker篇/image-20221214150155349-16795325330428.png)
+![image-20221214150155349](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214150155349-16795325330428.png)
 
 Docker是一个Client-Server结构的系统，Docker守护进程运行在主机上， 然后通过Socket连接从客户端访问，守护进程从客户端接受命令并管理运行在主机上的容器。 
 
@@ -140,7 +140,7 @@ Docker运行的基本流程为：
 6. 当需要限制Docker容器运行资源或执行用户指令等操作时，则通过Exec driver来完成。
 7. Libcontainer是一项独立的容器管理包，Network driver以及 Exec driver 都是通过Libcontainer来实现具体对容器进行的操作。
 
-![image-20221214152754590](assets/01-Docker篇/image-20221214152754590-16795325330429.png)
+![image-20221214152754590](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214152754590-16795325330429.png)
 
 #### 安装步骤
 
@@ -226,7 +226,7 @@ docker version
 docker run hello-world
 ```
 
-![image-20221214162206324](assets/01-Docker篇/image-20221214162206324-167953253304210.png)
+![image-20221214162206324](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214162206324-167953253304210.png)
 
 ###### 自启动与取消容器自启动
 
@@ -287,19 +287,19 @@ rm -rf /var/lib/containerd
 
 - 登陆阿里云开发者平台
 
-![image-20221214183140292](assets/01-Docker篇/image-20221214183140292-167953253304211.png)
+![image-20221214183140292](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214183140292-167953253304211.png)
 
 - 点击控制台
 
-![image-20221214183154561](assets/01-Docker篇/image-20221214183154561-167953253304212.png)
+![image-20221214183154561](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214183154561-167953253304212.png)
 
 - 选择容器镜像服务
 
-![image-20221214183210605](assets/01-Docker篇/image-20221214183210605-167953253304213.png)
+![image-20221214183210605](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214183210605-167953253304213.png)
 
 - 获取加速器地址
 
-![image-20221214183245666](assets/01-Docker篇/image-20221214183245666-167953253304314.png)
+![image-20221214183245666](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214183245666-167953253304314.png)
 
 获取到加速器地址后，返回linux中，进行配置
 
@@ -348,7 +348,7 @@ docker run hello-world
 
 其中，run实际干了如下几步：
 
-![image-20221214183739698](assets/01-Docker篇/image-20221214183739698-167953253304315.png)
+![image-20221214183739698](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214183739698-167953253304315.png)
 
 #### 底层原理
 
@@ -362,7 +362,7 @@ docker run hello-world
 
 当新建一个容器时，docker不需要和虚拟机一样重新加载一个操作系统内核。进而避免引寻、加载操作系统内核返回等比较费时费资源的过程，当新建一个虚拟机时，虚拟机软件需要加载OS，返回新建过程是分钟级别的。而docker由于直接利用宿主机的操作系统，则省略了返回过程，因此新建一个docker容器只需要几秒钟。
 
-![image-20221214184213011](assets/01-Docker篇/image-20221214184213011-167953253304316.png)
+![image-20221214184213011](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214184213011-167953253304316.png)
 
 |            | Docker容器              | 虚拟机（VM）                |
 | ---------- | ----------------------- | --------------------------- |
@@ -435,7 +435,7 @@ docker 具体命令 --help
 docker images [OPTIONS]
 ```
 
-![image-20221214192040552](assets/01-Docker篇/image-20221214192040552-167953253304317.png)
+![image-20221214192040552](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214192040552-167953253304317.png)
 
 各个选项说明：
 
@@ -460,7 +460,7 @@ docker images [OPTIONS]
 docker search [OPTIONS] 镜像名字
 ```
 
-![image-20221214192557361](assets/01-Docker篇/image-20221214192557361-167953253304318.png)
+![image-20221214192557361](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214192557361-167953253304318.png)
 
 OPTIONS说明：
 
@@ -470,7 +470,7 @@ OPTIONS说明：
 docker search --limit 5 redis
 ```
 
-![image-20221214192712643](assets/01-Docker篇/image-20221214192712643-167953253304319.png)
+![image-20221214192712643](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214192712643-167953253304319.png)
 
 ##### 拉取镜像
 
@@ -490,7 +490,7 @@ docker pull 镜像名字:latest
 docker system df
 ```
 
-![image-20221214192957578](assets/01-Docker篇/image-20221214192957578-167953253304320.png)
+![image-20221214192957578](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214192957578-167953253304320.png)
 
 ##### 删除镜像
 
@@ -524,7 +524,7 @@ docker rmi -f $(docker images -qa)
 
 **仓库名、标签都是\<none>的镜像，俗称虚悬镜像dangling image。**
 
-![image-20221214193942120](assets/01-Docker篇/image-20221214193942120-167953253304321.png)
+![image-20221214193942120](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20221214193942120-167953253304321.png)
 
 查看
 
@@ -546,7 +546,7 @@ docker image prune
 
 **有镜像才能创建容器，这是根本前提(下载一个CentOS或者ubuntu镜像演示)**
 
-![image-20230108014258262](assets/01-Docker篇/image-20230108014258262.png)
+![image-20230108014258262](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230108014258262.png)
 
 * Ubuntu
 
@@ -780,7 +780,7 @@ cat 文件名.tar | docker import - 镜像用户/镜像名:镜像版本号
 
 #### 所有命令
 
-![image-20230108034019568](assets/01-Docker篇/image-20230108034019568.png)
+![image-20230108034019568](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230108034019568.png)
 
 | 参数命令 | 说明                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -840,7 +840,7 @@ Docker镜像是一种轻量级、可执行的独立软件包，它包含运行�
 
 以pull为例，在下载的过程中可以看到docker的镜像好像是在一层一层的在下载。
 
-![image-20230108035311139](assets/01-Docker篇/image-20230108035311139.png)
+![image-20230108035311139](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230108035311139.png)
 
 #### 什么是UnionFS（联合文件系统）
 
@@ -900,20 +900,20 @@ docker commit -m="add vim cmd" -a="胡桃" e63cefb3fac6 ubuntu:3.7
 - -a：提交的镜像作者；
 - -m：提交时的说明文字；
 
-![image-20230108043114181](assets/01-Docker篇/image-20230108043114181.png)
+![image-20230108043114181](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230108043114181.png)
 
 ```shell
 docker images
 docker run -it 0d5d900e65ac bash
 ```
 
-![image-20230108043459204](assets/01-Docker篇/image-20230108043459204.png)
+![image-20230108043459204](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230108043459204.png)
 
 ### 本地镜像发布到阿里云
 
 #### 本地镜像发布到阿里云流程
 
-![image-20230108044826800](assets/01-Docker篇/image-20230108044826800.png)
+![image-20230108044826800](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230108044826800.png)
 
 #### 镜像的生成方法
 
@@ -923,33 +923,33 @@ docker run -it 0d5d900e65ac bash
 
 选择控制台，进入容器镜像服务
 
-![image-20230113022126075](assets/01-Docker篇/image-20230113022126075.png)
+![image-20230113022126075](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113022126075.png)
 
 选择个人实例
 
-![image-20230113022139796](assets/01-Docker篇/image-20230113022139796.png)
+![image-20230113022139796](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113022139796.png)
 
 选择命名空间
 
-![image-20230113022148046](assets/01-Docker篇/image-20230113022148046.png)
+![image-20230113022148046](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113022148046.png)
 
 然后创建命名空间
 
-![image-20230113022248017](assets/01-Docker篇/image-20230113022248017.png)
+![image-20230113022248017](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113022248017.png)
 
 之后，选择镜像仓库
 
-![image-20230113022329989](assets/01-Docker篇/image-20230113022329989.png)
+![image-20230113022329989](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113022329989.png)
 
 然后创建镜像仓库
 
-![image-20230113023730263](assets/01-Docker篇/image-20230113023730263.png)
+![image-20230113023730263](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113023730263.png)
 
 点击下一步，并选择本地仓库，然后点击创建。
 
 然后会看到自动生成了管理界面脚本。
 
-![image-20230113022859255](assets/01-Docker篇/image-20230113022859255.png)
+![image-20230113022859255](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113022859255.png)
 
 然后根据界面命令，进行运行。
 
@@ -959,7 +959,7 @@ docker run -it 0d5d900e65ac bash
 docker images
 ```
 
-![image-20230113023429385](assets/01-Docker篇/image-20230113023429385.png)
+![image-20230113023429385](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113023429385.png)
 
 ```shell
 docker login --username=[用户名]registry.cn-hangzhou.aliyuncs.com
@@ -987,7 +987,7 @@ docker pull registry.cn-hangzhou.aliyuncs.com/tokimeki/ubuntu:3.7
 
 #### 本地镜像发布到私有库流程
 
- ![image-20230113024221926](assets/01-Docker篇/image-20230113024221926.png)
+ ![image-20230113024221926](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113024221926.png)
 
 #### 为什么需要私有库
 
@@ -1028,7 +1028,7 @@ docker run -it ubuntu bash
 
 原始的Ubuntu镜像是不带着ifconfig命令的
 
-![image-20230113025718191](assets/01-Docker篇/image-20230113025718191.png)
+![image-20230113025718191](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113025718191.png)
 
 外网连通的情况下，安装ifconfig命令并测试通过
 
@@ -1052,7 +1052,7 @@ docker commit -m="提交的描述信息" -a="胡桃" 容器ID 要创建的目标
 docker commit -m="ifconfig cmd add" -a="胡桃" 31b3aa9bf1fd myubuntu:1.0
 ```
 
-![image-20230113030054114](assets/01-Docker篇/image-20230113030054114.png)
+![image-20230113030054114](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113030054114.png)
 
 ##### 验证本地私服库
 
@@ -1062,7 +1062,7 @@ curl验证本地私服库上有什么镜像
  curl -XGET http://192.168.183.102:5000/v2/_catalog
 ```
 
-![image-20230113030702928](assets/01-Docker篇/image-20230113030702928.png)
+![image-20230113030702928](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113030702928.png)
 
 ##### 将新镜像修改为符合私服规范的Tag
 
@@ -1080,7 +1080,7 @@ docker   tag   镜像:Tag   Host:Port/Repository:Tag
 docker tag  myubuntu:1.0 192.168.183.102:5000/myubuntu:1.0
 ```
 
-![image-20230113031043967](assets/01-Docker篇/image-20230113031043967.png)
+![image-20230113031043967](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113031043967.png)
 
 ##### 修改配置文件使之支持http
 
@@ -1115,7 +1115,7 @@ docker push 192.168.183.102:5000/myubuntu:1.0
  curl -XGET http://192.168.183.102:5000/v2/_catalog
 ```
 
-![image-20230113032027180](assets/01-Docker篇/image-20230113032027180.png)
+![image-20230113032027180](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230113032027180.png)
 
 ##### pull到本地并运行
 
@@ -1396,7 +1396,7 @@ docker exec -it b7058fb0a56d bash
 show variables like 'character%';
 ```
 
-![image-20230226133809701](assets/01-Docker篇/image-20230226133809701.png)
+![image-20230226133809701](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230226133809701.png)
 
 - 再新建库新建表再插入中文测试
 
@@ -1560,7 +1560,7 @@ docker restart mysql-slave
 show master status;
 ```
 
-![image-20230326170914802](assets/01-Docker篇/image-20230326170914802.png)
+![image-20230326170914802](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230326170914802.png)
 
 - 进入mysql-slave容器
 
@@ -1591,7 +1591,7 @@ change master to master_host='192.168.183.101', master_user='slave', master_pass
 show slave status \G;
 ```
 
-![image-20230326171019747](assets/01-Docker篇/image-20230326171019747.png)
+![image-20230326171019747](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230326171019747.png)
 
 可以看见还没有开始。
 
@@ -1603,7 +1603,7 @@ start slave
 
 - 查看从数据库状态发现已经同步
 
-![image-20230326171125813](assets/01-Docker篇/image-20230326171125813.png)
+![image-20230326171125813](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230326171125813.png)
 
 - 主从复制测试
 
@@ -1689,7 +1689,7 @@ redis-cli --cluster create \
 
 --cluster-replicas 1 表示为每个master创建一个slave节点。
 
-![image-20230326173735823](assets/01-Docker篇/image-20230326173735823.png)
+![image-20230326173735823](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230326173735823.png)
 
 - 链接进入6381作为切入点，查看集群状态
 
@@ -1711,7 +1711,7 @@ cluster nodes
 
 
 
-![image-20230326173856127](assets/01-Docker篇/image-20230326173856127.png)
+![image-20230326173856127](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230326173856127.png)
 
 ###### 主从扩容案例
 
@@ -1775,7 +1775,7 @@ redis-cli --cluster check 192.168.183.101:6381
 >
 > 重新分配成本太高，所以前3家各自匀出来一部分，从6381/6382/6383三个旧节点分别匀出1364个坑位给新节点6387
 
-![image-20230326175133051](assets/01-Docker篇/image-20230326175133051.png)
+![image-20230326175133051](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230326175133051.png)
 
 - 为主节点6387分配从节点6388
 
@@ -1823,9 +1823,9 @@ redis-cli --cluster del-node 192.168.183.101:6388 51296e136cc0273844f364d5a6559e
 redis-cli --cluster reshard 192.168.183.101:6381
 ```
 
-![image-20230326175614128](assets/01-Docker篇/image-20230326175614128.png)
+![image-20230326175614128](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230326175614128.png)
 
-![image-20230326175555819](assets/01-Docker篇/image-20230326175555819.png)
+![image-20230326175555819](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230326175555819.png)
 
 - 检查集群情况第二次
 
@@ -1859,7 +1859,7 @@ redis-cli --cluster check 192.168.183.101:6382
 
 [Dockerfile](https://docs.docker.com/engine/reference/builder/)是用来构建Docker镜像的文本文件，是由一条条构建镜像所需的指令和参数构成的脚本。
 
-![image-20230326225208506](assets/01-Docker篇/image-20230326225208506.png)
+![image-20230326225208506](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230326225208506.png)
 
 从应用软件的角度来看，Dockerfile、Docker镜像与Docker容器分别代表软件的三个不同阶段
 
@@ -1869,7 +1869,7 @@ redis-cli --cluster check 192.168.183.101:6382
 
 Dockerfile面向开发，Docker镜像成为交付标准，Docker容器则涉及部署与运维，三者缺一不可，合力充当Docker体系的基石。
 
-![image-20230326230337874](assets/01-Docker篇/image-20230326230337874.png)
+![image-20230326230337874](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230326230337874.png)
 
 1. Dockerfile，需要定义一个Dockerfile，Dockerfile定义了进程需要的一切东西。Dockerfile涉及的内容包括执行代码或者是文件、环境变量、依赖包、运行时环境、动态链接库、操作系统的发行版、服务进程和内核进程(当应用进程需要和系统服务和内核进程打交道，这时需要考虑如何设计namespace的权限控制)等等;
 
@@ -2204,9 +2204,9 @@ public class HelloController {
 
 通过【package】选项，将项目打成jar包
 
-![image-20230327232228657](assets/01-Docker篇/image-20230327232228657.png)
+![image-20230327232228657](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230327232228657.png)
 
-![image-20230327232312155](assets/01-Docker篇/image-20230327232312155.png)
+![image-20230327232312155](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230327232312155.png)
 
 ##### 编写Dockerfile
 
@@ -2255,7 +2255,7 @@ curl 127.0.0.1:6001
 
 ###### docker不启动，默认网络情况
 
-![image-20230329234107939](assets/01-Docker篇/image-20230329234107939.png)
+![image-20230329234107939](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230329234107939.png)
 
 - ens33
 - lo
@@ -2273,7 +2273,7 @@ yum remove libvirt-libs.x86_64
 
 会产生一个名为docker0的虚拟网桥。
 
-![image-20230329234239161](assets/01-Docker篇/image-20230329234239161.png)
+![image-20230329234239161](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230329234239161.png)
 
 当安装docker后，会默认创建3大网络模式，查看docker网络模式命令。
 
@@ -2281,7 +2281,7 @@ yum remove libvirt-libs.x86_64
 docker network ls
 ```
 
-![image-20230329234359166](assets/01-Docker篇/image-20230329234359166.png)
+![image-20230329234359166](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230329234359166.png)
 
 ##### Docker网络的用途
 
@@ -2296,7 +2296,7 @@ docker network ls
 docker network --help
 ```
 
-![image-20230329234507761](assets/01-Docker篇/image-20230329234507761.png)
+![image-20230329234507761](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230329234507761.png)
 
 ##### 创建网络
 
@@ -2345,13 +2345,13 @@ docker ps # 窗口3
 
 ###### docker inspect 容器ID or 容器名字
 
-![image-20230410102858472](assets/01-Docker篇/image-20230410102858472.png)
+![image-20230410102858472](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410102858472.png)
 
-![image-20230410102934616](assets/01-Docker篇/image-20230410102934616.png)
+![image-20230410102934616](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410102934616.png)
 
 ###### 关闭u2实例，新建u3，查看ip变
 
-![image-20230410103025128](assets/01-Docker篇/image-20230410103025128.png)
+![image-20230410103025128](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410103025128.png)
 
 通过上述可以得知，docker容器内部的ip是有可能会发生改变的。
 
@@ -2367,13 +2367,13 @@ Docker 服务默认会创建一个 docker0 网桥（其上有一个 docker0 内�
 docker network inspect bridge | grep name
 ```
 
-![image-20230410103656229](assets/01-Docker篇/image-20230410103656229.png)
+![image-20230410103656229](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410103656229.png)
 
 ```bash
 ifconfig | grep docker
 ```
 
-![image-20230410103738302](assets/01-Docker篇/image-20230410103738302.png)
+![image-20230410103738302](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410103738302.png)
 
 ###### bridge说明
 
@@ -2388,7 +2388,7 @@ ifconfig | grep docker
 
 通过上述，将宿主机上的所有容器都连接到这个内部网络上，两个容器在同一个网络下,会从这个网关下各自拿到分配的ip，此时两个容器的网络是互通的。
 
-![image-20230410104402886](assets/01-Docker篇/image-20230410104402886.png)
+![image-20230410104402886](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410104402886.png)
 
 ###### bridge案例
 
@@ -2401,11 +2401,11 @@ docker run -d -p 8082:8080   --name tomcat82 billygoo/tomcat8-jdk8
 
 - 两两匹配验证
 
-![image-20230410105914451](assets/01-Docker篇/image-20230410105914451.png)
+![image-20230410105914451](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410105914451.png)
 
-![image-20230410105943108](assets/01-Docker篇/image-20230410105943108.png)
+![image-20230410105943108](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410105943108.png)
 
-![image-20230410111138849](assets/01-Docker篇/image-20230410111138849.png)
+![image-20230410111138849](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410111138849.png)
 
 ##### host
 
@@ -2417,7 +2417,7 @@ docker run -d -p 8082:8080   --name tomcat82 billygoo/tomcat8-jdk8
 
 容器将不会获得一个独立的Network Namespace， 而是和宿主机共用一个Network Namespace。容器将不会虚拟出自己的网卡而是使用宿主机的IP和端口。
 
-![image-20230410111642857](assets/01-Docker篇/image-20230410111642857.png)
+![image-20230410111642857](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410111642857.png)
 
 ###### host案例
 
@@ -2429,7 +2429,7 @@ docker启动时指定--network=host或-net=host，如果还指定了-p映射端�
 docker run -d -p 8083:8080 --network host --name tomcat83 billygoo/tomcat8-jdk8
 ```
 
-![image-20230410112111076](assets/01-Docker篇/image-20230410112111076.png)
+![image-20230410112111076](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410112111076.png)
 
 - 正确
 
@@ -2464,7 +2464,7 @@ docker run -d -p 8084:8080 --network none --name tomcat84 billygoo/tomcat8-jdk8
 docker exec -it tomcat84 bash
 ```
 
-![image-20230410124454399](assets/01-Docker篇/image-20230410124454399.png)
+![image-20230410124454399](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410124454399.png)
 
 - 进入容器外部查看
 
@@ -2472,7 +2472,7 @@ docker exec -it tomcat84 bash
 docker inspect tomcat84 | tail -n 20
 ```
 
-![image-20230410124617924](assets/01-Docker篇/image-20230410124617924.png)
+![image-20230410124617924](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410124617924.png)
 
 ##### container
 
@@ -2480,7 +2480,7 @@ docker inspect tomcat84 | tail -n 20
 
 container 网络模式 ：新建的容器和已经存在的一个容器共享一个网络ip配置而不是和宿主机共享。新创建的容器不会创建自己的网卡，配置自己的IP，而是和一个指定的容器共享IP、端口范围等。同样，两个容器除了网络方面，其他的如文件系统、进程列表等还是隔离的。
 
-![image-20230410124748029](assets/01-Docker篇/image-20230410124748029.png)
+![image-20230410124748029](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410124748029.png)
 
 ###### container案例
 
@@ -2492,7 +2492,7 @@ docker run -d -p 8085:8080                                     --name tomcat85 b
 docker run -d -p 8086:8080 --network container:tomcat85 --name tomcat86 billygoo/tomcat8-jdk8
 ```
 
-![image-20230410125639859](assets/01-Docker篇/image-20230410125639859.png)
+![image-20230410125639859](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410125639859.png)
 
 相当于tomcat86和tomcat85公用同一个ip同一个端口，导致端口冲突。
 
@@ -2506,13 +2506,13 @@ docker run -it --network container:alpine1 --name alpine2  alpine /bin/sh
 
 运行结果，验证共用搭桥
 
-![image-20230410130019484](assets/01-Docker篇/image-20230410130019484.png)
+![image-20230410130019484](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410130019484.png)
 
-![image-20230410130036276](assets/01-Docker篇/image-20230410130036276.png)
+![image-20230410130036276](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410130036276.png)
 
 假如此时关闭alpine1，再看看alpine2
 
-![image-20230410130133153](assets/01-Docker篇/image-20230410130133153.png)
+![image-20230410130133153](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410130133153.png)
 
 ##### 自定义网络
 
@@ -2538,7 +2538,7 @@ docker network create my_network
 
 #### Docker平台架构图解
 
-<img src="assets/01-Docker篇/image-20230410133959860.png" alt="image-20230410133959860" style="zoom: 67%;" />
+<img src="/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230410133959860.png" alt="image-20230410133959860" style="zoom: 67%;" />
 
 从其架构和运行流程来看，Docker 是一个 C/S 模式的架构，后端是一个松耦合架构，众多模块各司其职。 
 
@@ -3051,7 +3051,7 @@ docker build -t zzyy_docker:1.6 .
 docker ps
 ```
 
-![image-20230412095758178](assets/01-Docker篇/image-20230412095758178.png)
+![image-20230412095758178](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230412095758178.png)
 
 ##### 创建数据库
 
@@ -3118,13 +3118,13 @@ docker run -d -p 8000:8000 -p 9000:9000 --name portainer     --restart=always   
 - 第一次登录需创建admin，访问地址：xxx.xxx.xxx.xxx:9000
 - 设置admin用户和密码后首次登陆
 
-![image-20230412150400980](assets/01-Docker篇/image-20230412150400980.png)
+![image-20230412150400980](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230412150400980.png)
 
 ### Docker容器监控之CAdvisor + InfluxDB + Granfana
 
 #### 为什么需要容器监控工具
 
-![image-20230412170503078](assets/01-Docker篇/image-20230412170503078.png)
+![image-20230412170503078](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230412170503078.png)
 
  
 
@@ -3134,7 +3134,7 @@ docker run -d -p 8000:8000 -p 9000:9000 --name portainer     --restart=always   
 
 ##### CAdvisor监控收集+InfluxDB存储数据+Granfana展示图表
 
-<img src="assets/01-Docker篇/image-20230412170537399.png" alt="image-20230412170537399" style="zoom:67%;" />
+<img src="/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230412170537399.png" alt="image-20230412170537399" style="zoom:67%;" />
 
 ##### CAdvisor
 
@@ -3243,7 +3243,7 @@ docker-compose up -d
 docker ps
 ```
 
-![image-20230412173142285](assets/01-Docker篇/image-20230412173142285.png)
+![image-20230412173142285](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230412173142285.png)
 
 ##### 测试
 
@@ -3251,48 +3251,48 @@ docker ps
 
 cadvisor主要用作数据采集
 
-![image-20230412173401906](assets/01-Docker篇/image-20230412173401906.png)
+![image-20230412173401906](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230412173401906.png)
 
 ###### 浏览influxdb存储服务，http://ip:8083/
 
-![image-20230412173423533](assets/01-Docker篇/image-20230412173423533.png)
+![image-20230412173423533](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230412173423533.png)
 
 ###### 浏览grafana展现服务，http://ip:3000
 
 ip+3000端口的方式访问,默认帐户密码（admin/admin）
 
-![image-20230412173436208](assets/01-Docker篇/image-20230412173436208.png)
+![image-20230412173436208](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230412173436208.png)
 
 配置步骤
 
 - 配置数据源
 
-![image-20230412173626907](assets/01-Docker篇/image-20230412173626907.png)
+![image-20230412173626907](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230412173626907.png)
 
 - 选择influxdb数据源
 
 - 配置细节
 
-![image-20230413140446753](assets/01-Docker篇/image-20230413140446753.png)
+![image-20230413140446753](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230413140446753.png)
 
-![image-20230413140544156](assets/01-Docker篇/image-20230413140544156.png)
+![image-20230413140544156](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230413140544156.png)
 
 注意账号和密码均为root/root
 
 - 配置面板panel
 
-![image-20230413140658090](assets/01-Docker篇/image-20230413140658090.png)
+![image-20230413140658090](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230413140658090.png)
 
-![image-20230413140750904](assets/01-Docker篇/image-20230413140750904.png)
+![image-20230413140750904](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230413140750904.png)
 
-![image-20230413140808100](assets/01-Docker篇/image-20230413140808100.png)
+![image-20230413140808100](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230413140808100.png)
 
-![image-20230413140918090](assets/01-Docker篇/image-20230413140918090.png)
+![image-20230413140918090](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230413140918090.png)
 
-![image-20230413141114956](assets/01-Docker篇/image-20230413141114956.png)
+![image-20230413141114956](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230413141114956.png)
 
 
 
-![image-20230413141143345](assets/01-Docker篇/image-20230413141143345.png)
+![image-20230413141143345](/public/storage/StudyNotes/Java%E7%BC%96%E7%A8%8B/07-%E4%BA%91%E5%8E%9F%E7%94%9F/assets/01-Docker篇/image-20230413141143345.png)
 
 到这里cAdvisor+InfluxDB+Grafana容器监控系统就部署完成了。
