@@ -114,7 +114,7 @@ impl FileNode {
 
     // 通过 load_data 函数初始化数据
     pub(crate) async fn load_tree_data() -> Vec<FileNode>{
-        Self::fetch_file_tree("http://127.0.0.1:8341/public/file_tree.json".parse().unwrap()).await.unwrap();
+        Self::fetch_file_tree("/public/file_tree.json".parse().unwrap()).await.unwrap();
         let result = GLOBAL_FILE_TREE.lock().unwrap().clone();
         vec![result.unwrap()]
     }

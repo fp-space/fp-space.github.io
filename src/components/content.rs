@@ -7,7 +7,7 @@ use wasm_bindgen_futures::spawn_local;
 use pulldown_cmark::{Parser, Options};
 use web_sys::Node;
 use regex::Regex;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 // 动态加载 MathJax
 fn render_mathjax() {
@@ -133,13 +133,35 @@ pub fn main_content() -> Html {
         </div>
     }
 }
+// http://127.0.0.1:8341/public/storage/StudyNotes/Java编程/07-云原生/01-Docker篇/assets/01-Docker篇/image-20221214133715881-16795325330422.png
+// http://127.0.0.1:8341/public/storage/StudyNotes/Java编程/07-云原生/assets/01-Docker篇/image-20221214133715881-16795325330422.png
+
+
+fn remove_last_component(path: &str) -> PathBuf {
+    // 替换路径中的反斜杠为正斜杠，确保路径分隔符一致
+    let path = path.replace("\\", "/");
+
+    // 将路径字符串转换为 Path 类型
+    let path = Path::new(&path);
+
+    // 使用 components() 进行路径分割并去掉最后一个组件
+    let parent_path: PathBuf = path.components()
+        .take(path.components().count() - 1)  // 去掉最后一部分（文件名或文件夹）
+        .collect();
+
+    parent_path
+}
 
 // 替换 HTML 中的图片路径
 fn replace_image_paths(html: &str, markdown_path: &str) -> String {
+
+    web_sys::console::log_1(&JsValue::from_str(&format!("markdown_path: {}", markdown_path.to_string())));
+
     // 获取 Markdown 文件的父目录
-    let markdown_dir = Path::new(markdown_path)
-        .parent()
-        .unwrap_or_else(|| Path::new(""));
+    let markdown_dir = remove_last_component(markdown_path);
+
+    web_sys::console::log_1(&JsValue::from_str(&format!("markdown_dir: {}", markdown_dir.to_string_lossy().to_string())));
+
 
     // 匹配 <img> 标签中的 src 属性
     let img_regex = Regex::new(r#"(?i)<img[^>]*?src="([^"]+)"[^>]*?>"#).unwrap();
@@ -149,6 +171,10 @@ fn replace_image_paths(html: &str, markdown_path: &str) -> String {
         if !src.starts_with("http://") && !src.starts_with("https://") {
             // 拼接完整路径
             let full_path = markdown_dir.join(src).to_string_lossy().to_string();
+
+            web_sys::console::log_1(&JsValue::from_str(&format!("full_path: {}", full_path.to_string())));
+            web_sys::console::log_1(&JsValue::from_str(&format!("src: {}", src.to_string())));
+
             format!(r#"<img src="{}" />"#, full_path)
         } else {
             // 保留原路径
