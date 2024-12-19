@@ -11,83 +11,445 @@
           "is_dir": true,
           "children": [
             {
-              "name": "03-Kubesphere篇.md",
+              "name": "01-Docker篇.md",
               "is_dir": false,
               "children": null,
-              "path": "public/storage/StudyNotes/Java编程/07-云原生/03-Kubesphere篇.md",
+              "path": "public/storage/StudyNotes\\Java编程\\07-云原生\\01-Docker篇.md",
               "file_type": "md",
-              "create_time": "2024-12-13T23:47:32.398205130+08:00",
-              "modify_time": "2024-12-13T23:47:32.398205130+08:00",
-              "is_expanded": false
-            },
-            {
-              "name": "02-kubernetes篇（新）.md",
-              "is_dir": false,
-              "children": null,
-              "path": "public/storage/StudyNotes/Java编程/07-云原生/02-kubernetes篇（新）.md",
-              "file_type": "md",
-              "create_time": "2024-12-13T23:47:32.388205130+08:00",
-              "modify_time": "2024-12-13T23:47:32.388205130+08:00",
+              "create_time": "2024-12-19T16:55:58.036798800+08:00",
+              "modify_time": "2024-12-19T16:56:44.126641900+08:00",
               "is_expanded": false
             },
             {
               "name": "02-Kubernetes篇.md",
               "is_dir": false,
               "children": null,
-              "path": "public/storage/StudyNotes/Java编程/07-云原生/02-Kubernetes篇.md",
+              "path": "public/storage/StudyNotes\\Java编程\\07-云原生\\02-Kubernetes篇.md",
               "file_type": "md",
-              "create_time": "2024-12-13T23:47:32.368205134+08:00",
-              "modify_time": "2024-12-13T23:47:32.368205134+08:00",
+              "create_time": "2024-12-19T16:55:58.041130100+08:00",
+              "modify_time": "2024-12-19T16:56:44.131386400+08:00",
               "is_expanded": false
             },
             {
-              "name": "01-Docker篇.md",
+              "name": "02-kubernetes篇（新）.md",
               "is_dir": false,
               "children": null,
-              "path": "public/storage/StudyNotes/Java编程/07-云原生/01-Docker篇.md",
+              "path": "public/storage/StudyNotes\\Java编程\\07-云原生\\02-kubernetes篇（新）.md",
               "file_type": "md",
-              "create_time": "2024-12-13T23:47:32.368205134+08:00",
-              "modify_time": "2024-12-13T23:47:32.368205134+08:00",
+              "create_time": "2024-12-19T16:55:58.075487800+08:00",
+              "modify_time": "2024-12-19T16:56:44.176632500+08:00",
+              "is_expanded": false
+            },
+            {
+              "name": "03-Kubesphere篇.md",
+              "is_dir": false,
+              "children": null,
+              "path": "public/storage/StudyNotes\\Java编程\\07-云原生\\03-Kubesphere篇.md",
+              "file_type": "md",
+              "create_time": "2024-12-19T16:55:58.045206200+08:00",
+              "modify_time": "2024-12-19T16:56:44.204099+08:00",
               "is_expanded": false
             },
             {
               "name": "03-监控篇.md",
               "is_dir": false,
               "children": null,
-              "path": "public/storage/StudyNotes/Java编程/07-云原生/03-监控篇.md",
+              "path": "public/storage/StudyNotes\\Java编程\\07-云原生\\03-监控篇.md",
               "file_type": "md",
-              "create_time": "2024-12-13T23:47:32.398205130+08:00",
-              "modify_time": "2024-12-13T23:47:32.398205130+08:00",
+              "create_time": "2024-12-19T16:55:58.023474100+08:00",
+              "modify_time": "2024-12-19T16:56:44.205620700+08:00",
               "is_expanded": false
             }
           ],
-          "path": "public/storage/StudyNotes/Java编程/07-云原生",
+          "path": "public/storage/StudyNotes\\Java编程\\07-云原生",
           "file_type": "folder",
-          "create_time": "2024-12-13T23:47:32.368205134+08:00",
-          "modify_time": "2024-12-13T23:47:32.408205127+08:00",
+          "create_time": "2024-12-19T16:55:56.706612100+08:00",
+          "modify_time": "2024-12-19T16:56:44.217870300+08:00",
           "is_expanded": false
         }
       ],
-      "path": "public/storage/StudyNotes/Java编程",
+      "path": "public/storage/StudyNotes\\Java编程",
       "file_type": "folder",
-      "create_time": "2024-12-13T23:47:32.368205134+08:00",
-      "modify_time": "2024-12-13T23:47:32.368205134+08:00",
+      "create_time": "2024-12-19T16:55:56.702022400+08:00",
+      "modify_time": "2024-12-19T16:55:56.706612100+08:00",
       "is_expanded": false
     },
     {
       "name": "README.md",
       "is_dir": false,
       "children": null,
-      "path": "public/storage/StudyNotes/README.md",
+      "path": "public/storage/StudyNotes\\README.md",
       "file_type": "md",
-      "create_time": "2024-12-13T23:47:32.488205117+08:00",
-      "modify_time": "2024-12-13T23:47:32.488205117+08:00",
+      "create_time": "2024-12-19T16:55:58.099578800+08:00",
+      "modify_time": "2024-12-19T16:56:44.289383800+08:00",
+      "is_expanded": false
+    },
+    {
+      "name": "机器学习",
+      "is_dir": true,
+      "children": [
+        {
+          "name": "EM算法.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\EM算法.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.426639700+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "Hermite 矩阵的特征值不等式.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\Hermite 矩阵的特征值不等式.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.508190+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "k-means聚类.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\k-means聚类.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.501979200+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "k近邻法.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\k近邻法.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.429811800+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "PageRank算法.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\PageRank算法.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.504127500+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "主成分分析.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\主成分分析.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.465760400+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "二次分配问题.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\二次分配问题.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.476883100+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "代码",
+          "is_dir": true,
+          "children": [
+            {
+              "name": ".ipynb_checkpoints",
+              "is_dir": true,
+              "children": [],
+              "path": "public/storage/StudyNotes\\机器学习\\代码\\.ipynb_checkpoints",
+              "file_type": "folder",
+              "create_time": "2024-12-19T19:40:12.379768600+08:00",
+              "modify_time": "2024-12-19T19:40:12.379768600+08:00",
+              "is_expanded": false
+            }
+          ],
+          "path": "public/storage/StudyNotes\\机器学习\\代码",
+          "file_type": "folder",
+          "create_time": "2024-12-19T19:40:12.308643900+08:00",
+          "modify_time": "2024-12-19T19:40:12.410790600+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "信息论中的熵.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\信息论中的熵.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.479339500+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "决策树.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\决策树.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.419347200+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "图论基础.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\图论基础.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.433099900+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "奇异值分解.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\奇异值分解.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.467781600+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "强化学习.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\强化学习.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.435634800+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "支持向量机.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\支持向量机.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.470291900+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "时间序列模型.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\时间序列模型.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.482421700+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "朴素贝叶斯法.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\朴素贝叶斯法.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.484485300+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "条件随机场.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\条件随机场.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.472849200+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "概率图模型.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\概率图模型.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.474872800+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "概率潜在语义分析.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\概率潜在语义分析.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.494381500+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "潜在狄利克雷分配.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\潜在狄利克雷分配.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.496445800+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "潜在语义分析.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\潜在语义分析.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.488252800+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "特征工程.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\特征工程.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.438543200+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "社区算法.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\社区算法.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.440260200+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "线性分类.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\线性分类.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.443301100+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "线性回归.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\线性回归.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.447792900+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "谱聚类.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\谱聚类.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.422927800+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "距离度量.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\距离度量.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.451525+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "逻辑回归.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\逻辑回归.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.455700800+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "降维.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\降维.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.417300800+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "隐马尔科夫模型.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\隐马尔科夫模型.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.490745500+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "集成学习.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\集成学习.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.458963100+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "非负矩阵.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\非负矩阵.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.463108+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "马尔可夫决策过程.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\马尔可夫决策过程.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.499476700+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        },
+        {
+          "name": "马尔可夫链蒙特卡洛法.md",
+          "is_dir": false,
+          "children": null,
+          "path": "public/storage/StudyNotes\\机器学习\\马尔可夫链蒙特卡洛法.md",
+          "file_type": "md",
+          "create_time": "2024-12-19T19:40:12.507171700+08:00",
+          "modify_time": "2022-02-16T19:53:28+08:00",
+          "is_expanded": false
+        }
+      ],
+      "path": "public/storage/StudyNotes\\机器学习",
+      "file_type": "folder",
+      "create_time": "2024-12-19T19:40:12.303214200+08:00",
+      "modify_time": "2024-12-19T19:40:12.509698700+08:00",
       "is_expanded": false
     }
   ],
   "path": "public/storage/StudyNotes",
   "file_type": "folder",
-  "create_time": "2024-12-13T23:47:32.368205134+08:00",
-  "modify_time": "2024-12-13T23:47:32.488205117+08:00",
+  "create_time": "2024-12-19T16:55:56.698994+08:00",
+  "modify_time": "2024-12-19T19:40:12.303214200+08:00",
   "is_expanded": false
 }

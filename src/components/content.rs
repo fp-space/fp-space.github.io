@@ -9,6 +9,52 @@ use web_sys::Node;
 use regex::Regex;
 use std::path::Path;
 
+// 动态加载 MathJax
+fn render_mathjax() {
+    let window = web_sys::window().unwrap();
+    let document = window.document().unwrap();
+
+    // 1. 创建 MathJax 脚本标签
+    let script_mathjax = document.create_element("script").unwrap();
+    script_mathjax.set_attribute("type", "text/javascript").unwrap();
+    script_mathjax.set_attribute("id", "MathJax-script").unwrap();
+    script_mathjax.set_attribute("async", "true").unwrap();
+    script_mathjax.set_attribute("src", "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js").unwrap();
+
+    // 将 MathJax 脚本插入到 <head> 中
+    let head = document.head().unwrap();
+    head.append_child(&script_mathjax).unwrap();
+
+    // 2. 创建 MathJax 配置脚本
+    let script_config = document.create_element("script").unwrap();
+    script_config.set_attribute("type", "text/x-mathjax-config").unwrap();
+    script_config.set_inner_html(
+        r#"
+              MathJax.Hub.Config({
+                    extensions: ["tex2jax.js"],
+                    jax: ["input/TeX", "output/HTML-CSS"],
+                    tex2jax: {
+                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                        processEscapes: true
+                    },
+                    "HTML-CSS": { availableFonts: ["TeX"] },
+                     TeX: {extensions: ["AMSmath.js","AMSsymbols.js","extpfeil.js","mhchem.js"]
+                });
+            "#,
+    );
+
+    // 插入 MathJax 脚本
+    document.head().unwrap().append_child(&script_config).unwrap();
+
+
+
+    // 启动 MathJax 渲染
+    window.set_timeout_with_callback_and_timeout_and_arguments_0(
+        &js_sys::Function::new_no_args("MathJax.typeset()"),
+        1000
+    ).unwrap();
+}
 #[function_component(MainContent)]
 pub fn main_content() -> Html {
 
@@ -45,6 +91,9 @@ pub fn main_content() -> Html {
 
                     // 更新状态
                     markdown_html.set(processed_html);
+
+                    // // 调用 MathJax 渲染数学公式
+                    render_mathjax();
                 });
                 last_markdown_file_path.set((*markdown_file_path).clone()); // 更新 last_markdown_file_path
             }
