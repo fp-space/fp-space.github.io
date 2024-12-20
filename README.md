@@ -42,6 +42,5 @@ cargo run --bin generate
 遗留问题：latex语法渲染问题
 
 需求问题：
-1. github actions 部署
-2. github 笔记仓库拉取
-3. 样式布局整理
+1. github actions 部署 
+2. 样式布局整理
