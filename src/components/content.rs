@@ -6,9 +6,16 @@ use regex::Regex;
 use std::path::{Path, PathBuf};
 use std::string::String;
 use wasm_bindgen::JsValue;
+use wasm_bindgen::prelude::wasm_bindgen;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::Node;
 use yew::prelude::*;
+
+#[wasm_bindgen]
+extern "C" {
+    pub fn marked_parse(input: String) -> String;
+}
+
 
 #[function_component(MainContent)]
 pub fn main_content() -> Html {
@@ -43,6 +50,8 @@ pub fn main_content() -> Html {
 
                     // 替换图片路径
                     let processed_html = replace_image_paths(&html_output, &markdown_file_path_clone);
+                    // let processed_html = replace_image_paths(&fetched_markdown, &markdown_file_path_clone);
+                    // let processed_html = marked_parse(processed_html.to_string());
 
                     // 更新状态
                     markdown_html.set(processed_html);
