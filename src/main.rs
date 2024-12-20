@@ -1,4 +1,4 @@
-mod markdown;
+
 mod utils;
 mod components;
 mod model;
