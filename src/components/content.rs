@@ -1,60 +1,15 @@
-use std::string::String;
-use wasm_bindgen::JsValue;
-use yew::prelude::*;
+use crate::components::script::render_mathjax;
 use crate::context::app_context::AppStateContext;
 use gloo_net::http::Request;
-use wasm_bindgen_futures::spawn_local;
-use pulldown_cmark::{Parser, Options};
-use web_sys::Node;
+use pulldown_cmark::{Options, Parser};
 use regex::Regex;
 use std::path::{Path, PathBuf};
+use std::string::String;
+use wasm_bindgen::JsValue;
+use wasm_bindgen_futures::spawn_local;
+use web_sys::Node;
+use yew::prelude::*;
 
-// 动态加载 MathJax
-fn render_mathjax() {
-    let window = web_sys::window().unwrap();
-    let document = window.document().unwrap();
-
-    // 1. 创建 MathJax 脚本标签
-    let script_mathjax = document.create_element("script").unwrap();
-    script_mathjax.set_attribute("type", "text/javascript").unwrap();
-    script_mathjax.set_attribute("id", "MathJax-script").unwrap();
-    script_mathjax.set_attribute("async", "true").unwrap();
-    script_mathjax.set_attribute("src", "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js").unwrap();
-
-    // 将 MathJax 脚本插入到 <head> 中
-    let head = document.head().unwrap();
-    head.append_child(&script_mathjax).unwrap();
-
-    // 2. 创建 MathJax 配置脚本
-    let script_config = document.create_element("script").unwrap();
-    script_config.set_attribute("type", "text/x-mathjax-config").unwrap();
-    script_config.set_inner_html(
-        r#"
-              MathJax.Hub.Config({
-                    extensions: ["tex2jax.js"],
-                    jax: ["input/TeX", "output/HTML-CSS"],
-                    tex2jax: {
-                        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-                        processEscapes: true
-                    },
-                    "HTML-CSS": { availableFonts: ["TeX"] },
-                     TeX: {extensions: ["AMSmath.js","AMSsymbols.js","extpfeil.js","mhchem.js"]
-                });
-            "#,
-    );
-
-    // 插入 MathJax 脚本
-    document.head().unwrap().append_child(&script_config).unwrap();
-
-
-
-    // 启动 MathJax 渲染
-    window.set_timeout_with_callback_and_timeout_and_arguments_0(
-        &js_sys::Function::new_no_args("MathJax.typeset()"),
-        1000
-    ).unwrap();
-}
 #[function_component(MainContent)]
 pub fn main_content() -> Html {
 
@@ -125,6 +80,7 @@ pub fn main_content() -> Html {
                         .create_element("div")
                         .unwrap();
                     div.set_inner_html(&*markdown_html); // 使用借用的值
+
                     Html::VRef(Node::from(div)) // 将 HTML 内容包装为 Yew 的 VNode
                 } else {
                     html! { <p>{ "Loading..." }</p> }
@@ -133,9 +89,6 @@ pub fn main_content() -> Html {
         </div>
     }
 }
-// http://127.0.0.1:8341/public/storage/StudyNotes/Java编程/07-云原生/01-Docker篇/assets/01-Docker篇/image-20221214133715881-16795325330422.png
-// http://127.0.0.1:8341/public/storage/StudyNotes/Java编程/07-云原生/assets/01-Docker篇/image-20221214133715881-16795325330422.png
-
 
 fn remove_last_component(path: &str) -> PathBuf {
     // 替换路径中的反斜杠为正斜杠，确保路径分隔符一致
@@ -154,7 +107,6 @@ fn remove_last_component(path: &str) -> PathBuf {
 
 // 替换 HTML 中的图片路径
 fn replace_image_paths(html: &str, markdown_path: &str) -> String {
-
     web_sys::console::log_1(&JsValue::from_str(&format!("markdown_path: {}", markdown_path.to_string())));
 
     // 获取 Markdown 文件的父目录
