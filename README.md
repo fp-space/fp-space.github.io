@@ -1,6 +1,7 @@
-Mini Note
 
-采用 Rust 编程语言，选择 Yew 框架
+Welcome to Mini Note
+
+采用 Rust + Yew 实现
 
 ## 目录结构
 
@@ -22,20 +23,25 @@ Mini Note
 ├── Cargo.toml               # Rust 项目配置文件
 └── README.md                # 项目说明文件
 ```
-
-## css
+## 环境基础
+### css
 引入 twilwind, 使用 @apply，详见styles.scss
 
 ```bash
 npx tailwindcss -i ./styles/app.scss -o ./styles/app.css --watch
 ```
 
-## 文件树
+### 文件树
 ```bash
 cargo run --bin generate
 ```
 
-## 问题
+## 需求 & 问题
 
 ### v 0.0.1
 遗留问题：latex语法渲染问题
+
+需求问题：
+1. github actions 部署
+2. github 笔记仓库拉取
+3. 样式布局整理
