@@ -1,18 +1,31 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <link data-trunk rel="rust" data-bin="main" />
-    <link data-trunk rel="copy-dir" href="public">
-    <link data-trunk rel="scss" href="/styles/app.css" />
-    <!-- Font Awesome CSS-->
-    <link href="https://cdn.bootcss.com/font-awesome/5.13.0/css/all.css" rel="stylesheet">
+use web_sys::window;
 
-    <base data-trunk-public-url>
-    <title>Yew App</title>
+// 动态加载外部 JavaScript 文件的函数
+pub fn load_script(src: &str) {
+    let window = window().unwrap();
+    let document = window.document().unwrap();
 
-    <script type="text/javascript">
-    var mathPackages = ['noundefined', 'autoload', 'ams', 'textmacros', 'xypic'];
+    // 创建 <script> 元素
+    let script = document.create_element("script").unwrap();
+    script.set_attribute("type", "text/javascript").unwrap();
+    script.set_attribute("src", src).unwrap();
+
+    // 将脚本添加到 <head> 中
+    let head = document.head().unwrap();
+    head.append_child(&script).unwrap();
+}
+
+// 动态加载 MathJax
+pub fn render_mathjax() {
+    let window = window().unwrap();
+    let document = window.document().unwrap();
+
+    // 2. 创建 MathJax 配置脚本
+    let script_config = document.create_element("script").unwrap();
+    script_config.set_attribute("type", "text/x-mathjax-config").unwrap();
+    script_config.set_inner_html(
+        r#"
+         var mathPackages = ['noundefined', 'autoload', 'ams', 'textmacros', 'xypic'];
     MathJax = {
             loader: {
                 load: ['[custom]/xypic.js'],
@@ -70,20 +83,17 @@
             }
         }
     };
-    </script>
+            "#,
+    );
 
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3.1.4/es5/tex-chtml-full.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script>
-        function marked_parse(markdownText) {
-            let htmlContent  = marked.parse(markdownText);
-            console.log(htmlContent)
-            return htmlContent;
-        }
-    </script>
-</head>
-<body></body>
-</html>
+    // 插入 MathJax 脚本
+    document.head().unwrap().append_child(&script_config).unwrap();
 
 
 
+    // 启动 MathJax 渲染
+    window.set_timeout_with_callback_and_timeout_and_arguments_0(
+        &js_sys::Function::new_no_args("MathJax.typeset()"),
+        1000
+    ).unwrap();
+}
