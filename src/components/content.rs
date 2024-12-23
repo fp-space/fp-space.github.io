@@ -78,7 +78,7 @@ pub fn main_content() -> Html {
     }
 
     html! {
-    <div class="markdown-content prose prose-lg max-w-screen-2xl mx-auto">
+    <div class="markdown-content prose prose-lg max-w-screen-2xl mx-auto prose-p:overflow-x-auto prose-p:overflow-y-hidden">
             {
                 // 使用 .get() 方法借用 markdown_html 的值
                 if !(*markdown_html).is_empty() {
