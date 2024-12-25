@@ -50,6 +50,7 @@ pub fn main_content() -> Html {
                         .text()
                         .await
                         .unwrap();
+                    let fetched_markdown = fetched_markdown.replace(r"\\", r"\\\\");
 
                     // 转换 Markdown 为 HTML
                     let parser = Parser::new_ext(&fetched_markdown, Options::all());
