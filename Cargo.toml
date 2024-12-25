@@ -34,3 +34,7 @@ path = "src/generate.rs"
 [[bin]]
 name = "main"
 path = "src/main.rs"
+
+[[bin]]
+name = "outline_tree"
+path = "src/model/outline_tree.rs"

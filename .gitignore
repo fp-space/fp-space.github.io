@@ -8,3 +8,4 @@ styles/app.css
 ./package-lock.json
 /public/storage/
 /public/file_tree.json
+Cargo.lock

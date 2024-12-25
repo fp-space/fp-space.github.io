@@ -1,5 +1,5 @@
 use crate::components::script::render_mathjax;
-use crate::context::app_context::AppStateContext;
+use crate::context::app_context::{AppStateAction, AppStateContext};
 use gloo_net::http::Request;
 use pulldown_cmark::{Options, Parser};
 use regex::Regex;
@@ -10,6 +10,9 @@ use wasm_bindgen::prelude::wasm_bindgen;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::Node;
 use yew::prelude::*;
+use outline_tree::TitleNode;
+use crate::model::outline_tree;
+use crate::model::outline_tree::OutlineTree;
 
 #[wasm_bindgen]
 extern "C" {
@@ -30,7 +33,12 @@ pub fn main_content() -> Html {
         let markdown_html = markdown_html.clone(); // 克隆 UseStateHandle
         let markdown_file_path = markdown_file_path.clone();
         let last_markdown_file_path = last_markdown_file_path.clone();
+        let app_state_ctx = app_state_ctx.clone();
+
         use_effect(move || {
+
+            let app_state_ctx = app_state_ctx.clone();
+
             // 只有当 markdown_file_path 不为空并且与 last_markdown_file_path 不同时才触发请求
             if !(*markdown_file_path).is_empty() && *last_markdown_file_path != *markdown_file_path {
                 let markdown_file_path_clone = (*markdown_file_path).clone(); // 在闭包外克隆
@@ -52,6 +60,13 @@ pub fn main_content() -> Html {
                     let processed_html = replace_image_paths(&html_output, &markdown_file_path_clone);
                     // let processed_html = replace_image_paths(&fetched_markdown, &markdown_file_path_clone);
                     // let processed_html = marked_parse(processed_html.to_string());
+
+                    // 从 markdown 里面提取 # 作为大纲
+                    let titles = TitleNode::extract_titles_from_markdown(&fetched_markdown);
+
+                    if let Some(ctx) = app_state_ctx {
+                        ctx.dispatch(AppStateAction::UpdateUserStatus(Some(titles)));
+                    }
 
                     // 更新状态
                     markdown_html.set(processed_html);
@@ -133,8 +148,8 @@ fn replace_image_paths(html: &str, markdown_path: &str) -> String {
             // 拼接完整路径
             let full_path = markdown_dir.join(src).to_string_lossy().to_string();
 
-            web_sys::console::log_1(&JsValue::from_str(&format!("full_path: {}", full_path.to_string())));
-            web_sys::console::log_1(&JsValue::from_str(&format!("src: {}", src.to_string())));
+            // web_sys::console::log_1(&JsValue::from_str(&format!("full_path: {}", full_path.to_string())));
+            // web_sys::console::log_1(&JsValue::from_str(&format!("src: {}", src.to_string())));
 
             format!(r#"<img src="{}" />"#, full_path)
         } else {
