@@ -1,17 +1,17 @@
 use crate::components::script::render_mathjax;
 use crate::context::app_context::{AppStateAction, AppStateContext};
+use crate::model::outline_tree;
 use gloo_net::http::Request;
+use outline_tree::TitleNode;
 use pulldown_cmark::{Options, Parser};
 use regex::Regex;
 use std::path::{Path, PathBuf};
 use std::string::String;
-use wasm_bindgen::JsValue;
 use wasm_bindgen::prelude::wasm_bindgen;
+use wasm_bindgen::JsValue;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::Node;
 use yew::prelude::*;
-use outline_tree::TitleNode;
-use crate::model::outline_tree;
 use crate::model::outline_tree::OutlineTree;
 
 #[wasm_bindgen]
@@ -59,11 +59,13 @@ pub fn main_content() -> Html {
 
                     // 替换图片路径
                     let processed_html = replace_image_paths(&html_output, &markdown_file_path_clone);
+
+                    // 通过 js 解析
                     // let processed_html = replace_image_paths(&fetched_markdown, &markdown_file_path_clone);
                     // let processed_html = marked_parse(processed_html.to_string());
 
                     // 从 markdown 里面提取 # 作为大纲
-                    let titles = TitleNode::extract_titles_from_markdown(&fetched_markdown);
+                    let (titles, processed_html) = TitleNode::process_titles_with_ids(&processed_html);
 
                     if let Some(ctx) = app_state_ctx {
                         ctx.dispatch(AppStateAction::UpdateUserStatus(Some(titles)));
@@ -72,7 +74,7 @@ pub fn main_content() -> Html {
                     // 更新状态
                     markdown_html.set(processed_html);
 
-                    // // 调用 MathJax 渲染数学公式
+                    // 调用 MathJax 渲染数学公式 - 确保只渲染一次
                     render_mathjax();
                 });
                 last_markdown_file_path.set((*markdown_file_path).clone()); // 更新 last_markdown_file_path
@@ -150,8 +152,6 @@ fn replace_image_paths(html: &str, markdown_path: &str) -> String {
             let full_path = markdown_dir.join(src).to_string_lossy().to_string();
 
             // web_sys::console::log_1(&JsValue::from_str(&format!("full_path: {}", full_path.to_string())));
-            // web_sys::console::log_1(&JsValue::from_str(&format!("src: {}", src.to_string())));
-
             format!(r#"<img src="{}" />"#, full_path)
         } else {
             // 保留原路径
