@@ -22,95 +22,7 @@ pub struct FileNode {
     pub is_expanded: bool,          // 是否展开
 }
 
-pub trait FileTree{
-    fn new(name: String,
-           is_dir: bool,
-           children: Option<Vec<FileNode>>,
-           path: String,
-           file_type: String,
-           create_time: String,
-           modify_time: String, ) -> Self; // 切换文件夹的展开状态
-    fn toggle_expanded(&mut self); // 获取当前文件节点的展开状态
-    fn is_expanded(&self) -> bool; // 获取展开后的子节点（如果是目录并且展开，返回子节点，否则返回 None）
-    fn get_expanded_children(&self) -> Option<Vec<FileNode>>; // 根据给定的路径查找特定的文件节点
-    fn find_node_by_path(&self, path: &str) -> Option<&FileNode>; // 递归地获取所有的子节点路径
-    fn get_all_paths(&self) -> Vec<String>; // 通过 load_data 函数初始化数据
-    async fn load_tree_data() -> Vec<FileNode>; // 异步函数：通过 HTTP 请求获取文件目录信息，并解析 JSON 格式的数据
-    // #[wasm_bindgen]
-    async fn fetch_file_tree(url: String) -> Result<(), JsValue>;
-}
-
 impl FileNode {
-    // 构造一个新的文件节点
-    fn new(
-        name: String,
-        is_dir: bool,
-        children: Option<Vec<FileNode>>,
-        path: String,
-        file_type: String,
-        create_time: String,
-        modify_time: String,
-    ) -> Self {
-        FileNode {
-            name,
-            is_dir,
-            children,
-            path,
-            file_type,
-            create_time,
-            modify_time,
-            is_expanded: false, // 默认展开状态为 false
-        }
-    }
-
-    // 切换文件夹的展开状态
-    fn toggle_expanded(&mut self) {
-        self.is_expanded = !self.is_expanded;
-    }
-
-    // 获取当前文件节点的展开状态
-    fn is_expanded(&self) -> bool {
-        self.is_expanded
-    }
-
-    // 获取展开后的子节点（如果是目录并且展开，返回子节点，否则返回 None）
-    fn get_expanded_children(&self) -> Option<Vec<FileNode>> {
-        if self.is_expanded {
-            self.children.clone()
-        } else {
-            None
-        }
-    }
-
-    // 根据给定的路径查找特定的文件节点
-    fn find_node_by_path(&self, path: &str) -> Option<&FileNode> {
-        if self.path == path {
-            return Some(self);
-        }
-
-        // 如果当前节点有子节点，则递归查找
-        if let Some(children) = &self.children {
-            for child in children {
-                if let Some(found) = child.find_node_by_path(path) {
-                    return Some(found);
-                }
-            }
-        }
-
-        None
-    }
-
-    // 递归地获取所有的子节点路径
-    fn get_all_paths(&self) -> Vec<String> {
-        let mut paths = vec![self.path.clone()];
-        if let Some(children) = &self.children {
-            for child in children {
-                paths.extend(child.get_all_paths());
-            }
-        }
-        paths
-    }
-
 
     // 通过 load_data 函数初始化数据
     pub(crate) async fn load_tree_data() -> Vec<FileNode>{
@@ -119,9 +31,7 @@ impl FileNode {
         vec![result.unwrap()]
     }
 
-
     // 异步函数：通过 HTTP 请求获取文件目录信息，并解析 JSON 格式的数据
-    // #[wasm_bindgen]
     async fn fetch_file_tree(url: String) -> Result<(), JsValue> {
 
         // 创建请求对象

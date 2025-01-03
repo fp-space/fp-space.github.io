@@ -8,21 +8,14 @@ mod context;
 use crate::components::content::MainContent;
 use crate::components::navigation::Navigation;
 use crate::components::sidebar::Sidebar;
+use crate::context::app_context::AppStateProvider;
 use console_log::init_with_level;
 use log::Level;
-use yew::{function_component, html, use_effect, Html, Renderer};
-use crate::context::app_context::AppStateProvider;
-use crate::components::script::render_mathjax;
+use yew::{function_component, html, Html, Renderer};
 
 
 #[function_component(App)]
 fn app() -> Html {
-
-    // 在组件挂载时动态插入 MathJax 脚本及配置
-    use_effect(|| {
-        render_mathjax();
-    });
-
 
     html! {
         <AppStateProvider>

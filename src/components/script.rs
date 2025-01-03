@@ -1,20 +1,5 @@
 use web_sys::window;
 
-// 动态加载外部 JavaScript 文件的函数
-pub fn load_script(src: &str) {
-    let window = window().unwrap();
-    let document = window.document().unwrap();
-
-    // 创建 <script> 元素
-    let script = document.create_element("script").unwrap();
-    script.set_attribute("type", "text/javascript").unwrap();
-    script.set_attribute("src", src).unwrap();
-
-    // 将脚本添加到 <head> 中
-    let head = document.head().unwrap();
-    head.append_child(&script).unwrap();
-}
-
 // 动态加载 MathJax
 pub fn render_mathjax() {
     let window = window().unwrap();

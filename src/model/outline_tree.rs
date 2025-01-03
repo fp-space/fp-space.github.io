@@ -3,7 +3,7 @@ use std::rc::Rc;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct TitleNode {
-    pub level: i8,
+    pub level: usize,
     pub title: String,
     pub has_children: bool,  // 用于判断是否有子节点
     pub(crate) children: Vec<Rc<RefCell<TitleNode>>>,  // 存储子节点的 Rc<RefCell>
@@ -12,7 +12,7 @@ pub struct TitleNode {
 
 impl TitleNode {
     // 创建一个新的节点
-    fn new(title: String, level: i8) -> Rc<RefCell<TitleNode>> {
+    fn new(title: String, level: usize) -> Rc<RefCell<TitleNode>> {
         Rc::new(RefCell::new(TitleNode {
             level,
             title,
@@ -27,29 +27,29 @@ impl TitleNode {
         parent.borrow_mut().children.push(child);  // 将子节点添加到当前节点的 children 列表中
         parent.borrow_mut().has_children = true;  // 标记当前节点有子节点
     }
-
-    // 设置展开状态
-    fn set_expanded(&mut self, expanded: bool) {
-        self.is_expanded = expanded;
-    }
 }
 
 pub trait OutlineTree {
-    fn extract_titles_from_markdown(content: &str) -> Vec<Rc<RefCell<TitleNode>>>;
+    fn extract_titles(content: &str) -> Vec<Rc<RefCell<TitleNode>>>;
 }
 
 impl OutlineTree for TitleNode {
 
     // 从 Markdown 中提取标题并构建树状结构
-    fn extract_titles_from_markdown(content: &str) -> Vec<Rc<RefCell<TitleNode>>> {
+    fn extract_titles(content: &str) -> Vec<Rc<RefCell<TitleNode>>> {
         let mut stack: Vec<Rc<RefCell<TitleNode>>> = Vec::new();  // 用于追踪当前路径的栈，存储所有权
         let mut root: Vec<Rc<RefCell<TitleNode>>> = Vec::new();  // 根节点集合
 
+        let re = Regex::new(r"<h([1-6])>(.*?)</h([1-6])>").expect("Invalid regex pattern");
+
         for line in content.lines() {
-            let trimmed_line = line.trim();
-            if trimmed_line.starts_with('#') {
-                let level = trimmed_line.chars().take_while(|&c| c == '#').count() as i8;  // 计算标题的级别
-                let title = trimmed_line.trim_start_matches('#').trim().to_string();  // 获取标题文本
+
+            if let Some(captures) = re.captures(line) {
+                let level: usize = captures.get(1).unwrap().as_str().parse().expect("Invalid level");
+                let title = captures.get(2).unwrap().as_str().to_string();
+
+
+                // println!("Level: {}, Title: {}", level, title);
 
                 // 创建一个新的节点
                 let new_node = TitleNode::new(title, level);
@@ -83,16 +83,22 @@ impl OutlineTree for TitleNode {
 
 use std::io::{self, Read};
 use std::fs;
+use pulldown_cmark::{Options, Parser};
+use regex::Regex;
 
 fn main() -> io::Result<()> {
     // 指定要读取的文件路径
-    let file_path = "public/storage/StudyNotes/README.md"; // 替换为你的文件路径
+    let file_path = "public/storage/StudyNotes/Java编程/07-云原生/02-kubernetes篇（新）.md"; // 替换为你的文件路径
 
     // 读取文件内容并处理可能的错误
     let markdown_content = fs::read_to_string(file_path)?;
 
+    let parser = Parser::new_ext(&markdown_content, Options::all());
+    let mut html_output = String::new();
+    pulldown_cmark::html::push_html(&mut html_output, parser);
+
     // 从 Markdown 提取标题
-    let titles = TitleNode::extract_titles_from_markdown(&markdown_content);
+    let titles = TitleNode::extract_titles(&html_output);
 
     // 打印大纲
     println!("Outline:");
