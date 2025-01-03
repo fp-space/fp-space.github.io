@@ -1,17 +1,17 @@
 use crate::components::script::render_mathjax;
 use crate::context::app_context::{AppStateAction, AppStateContext};
+use crate::model::outline_tree;
 use gloo_net::http::Request;
+use outline_tree::TitleNode;
 use pulldown_cmark::{Options, Parser};
 use regex::Regex;
 use std::path::{Path, PathBuf};
 use std::string::String;
-use wasm_bindgen::JsValue;
 use wasm_bindgen::prelude::wasm_bindgen;
+use wasm_bindgen::JsValue;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::Node;
 use yew::prelude::*;
-use outline_tree::TitleNode;
-use crate::model::outline_tree;
 use crate::model::outline_tree::OutlineTree;
 
 #[wasm_bindgen]
@@ -65,7 +65,7 @@ pub fn main_content() -> Html {
                     // let processed_html = marked_parse(processed_html.to_string());
 
                     // 从 markdown 里面提取 # 作为大纲
-                    let titles = TitleNode::extract_titles(&processed_html);
+                    let (titles, processed_html) = TitleNode::process_titles_with_ids(&processed_html);
 
                     if let Some(ctx) = app_state_ctx {
                         ctx.dispatch(AppStateAction::UpdateUserStatus(Some(titles)));

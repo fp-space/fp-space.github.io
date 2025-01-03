@@ -30,15 +30,23 @@ impl TitleNode {
 }
 
 pub trait OutlineTree {
-    fn extract_titles(content: &str) -> Vec<Rc<RefCell<TitleNode>>>;
+    fn process_titles_with_ids (content: &str) -> (Vec<Rc<RefCell<TitleNode>>>, String) ;
+
 }
+
+pub fn sanitize_title(title: &str) -> String {
+    title.to_string()
+}
+
 
 impl OutlineTree for TitleNode {
 
     // 从 Markdown 中提取标题并构建树状结构
-    fn extract_titles(content: &str) -> Vec<Rc<RefCell<TitleNode>>> {
+    fn process_titles_with_ids(content: &str) -> (Vec<Rc<RefCell<TitleNode>>>, String) {
         let mut stack: Vec<Rc<RefCell<TitleNode>>> = Vec::new();  // 用于追踪当前路径的栈，存储所有权
         let mut root: Vec<Rc<RefCell<TitleNode>>> = Vec::new();  // 根节点集合
+        let mut updated_content = String::new();  // 用于保存更新后的内容
+
 
         let re = Regex::new(r"<h([1-6])>(.*?)</h([1-6])>").expect("Invalid regex pattern");
 
@@ -51,8 +59,16 @@ impl OutlineTree for TitleNode {
 
                 // println!("Level: {}, Title: {}", level, title);
 
+                // 生成 ID 并添加到标签中
+                let id = sanitize_title(&title);
+                let updated_line = format!("<h{level} id=\"{id}\">{title}</h{level}>");
+                // 将修改后的行加入更新后的内容
+                updated_content.push_str(&updated_line);
+                updated_content.push('\n');
+
                 // 创建一个新的节点
                 let new_node = TitleNode::new(title, level);
+
 
                 // 根据标题级别，决定是否将其添加为根节点或子节点
                 if stack.is_empty() {
@@ -74,11 +90,17 @@ impl OutlineTree for TitleNode {
 
                 // 将新的节点加入栈中，转移所有权
                 stack.push(new_node);  // 将新的节点加入栈中
+            }else {
+                // 如果不是标题行，直接加到更新后的内容
+                updated_content.push_str(line);
+                updated_content.push('\n');
             }
         }
 
-        root  // 返回根节点集合
+        (root, updated_content)
     }
+
+
 }
 
 use std::io::{self, Read};
@@ -98,7 +120,7 @@ fn main() -> io::Result<()> {
     pulldown_cmark::html::push_html(&mut html_output, parser);
 
     // 从 Markdown 提取标题
-    let titles = TitleNode::extract_titles(&html_output);
+    let (titles, _) = TitleNode::process_titles_with_ids(&html_output);
 
     // 打印大纲
     println!("Outline:");

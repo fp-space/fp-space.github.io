@@ -2,12 +2,13 @@ use std::cell::RefCell;
 use crate::components::icon::{FileIcon, FolderIcon};
 use crate::context::app_context::{AppStateAction, AppStateContext};
 use crate::model::file_tree::FileNode;
-use crate::model::outline_tree::TitleNode;
+use crate::model::outline_tree::{sanitize_title, TitleNode};
 use std::collections::HashMap;
 use std::rc::Rc;
 use wasm_bindgen::JsValue;
 use wasm_bindgen_futures::spawn_local;
 use yew::prelude::*;
+use crate::model::outline_tree;
 
 #[derive(PartialEq)]
 enum Tab {
@@ -115,7 +116,7 @@ fn render_outline_node(
     html! {
         <div class="outline-node">
             <div class="outline-node-header" onclick={toggle}>
-                <span>{title}</span>
+                <span><a href={format!("#{}", sanitize_title(&title))}>{title}</a></span>
                 { render_toggle_button(is_expanded, node_ref.has_children) }
             </div>
             { render_children(is_expanded, &node_ref.children, expanded_state) }
