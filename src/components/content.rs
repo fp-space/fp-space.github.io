@@ -1,3 +1,4 @@
+use std::cell::RefCell;
 use crate::components::script::render_mathjax;
 use crate::context::app_context::{AppStateAction, AppStateContext};
 use crate::model::outline_tree;
@@ -6,9 +7,10 @@ use outline_tree::TitleNode;
 use pulldown_cmark::{Options, Parser};
 use regex::Regex;
 use std::path::{Path, PathBuf};
+use std::rc::Rc;
 use std::string::String;
-use wasm_bindgen::prelude::wasm_bindgen;
-use wasm_bindgen::JsValue;
+use wasm_bindgen::prelude::{wasm_bindgen, Closure};
+use wasm_bindgen::{JsCast, JsValue};
 use wasm_bindgen_futures::spawn_local;
 use web_sys::Node;
 use yew::prelude::*;
@@ -107,6 +109,30 @@ pub fn main_content() -> Html {
                         .create_element("div")
                         .unwrap();
                     div.set_inner_html(&*markdown_html); // 使用借用的值
+
+      // 使用 use_effect 在内容渲染后打印 "hello"
+                {
+                    let markdown_html = markdown_html.clone();
+                    use_effect(move || {
+                        let window = web_sys::window().unwrap();
+
+                        // 创建一个闭包并将其包装为 js_sys::Function
+                        let closure = Closure::<dyn FnMut(f64)>::new(move |_| {
+                            web_sys::console::log_1(&JsValue::from_str("hello"));
+                        });
+
+                        // 将闭包的所有权绑定到 Rc<RefCell>，确保生命周期延长
+                        let closure_rc = Rc::new(RefCell::new(closure));
+
+                        // 调用 request_animation_frame
+                        window.request_animation_frame(closure_rc.borrow().as_ref().unchecked_ref()).unwrap();
+
+                        // 保持闭包的生命周期，避免被提前释放
+                        let _ = closure_rc; // 延长 closure_rc 的生命周期
+
+                        || {}
+                    });
+                }
 
                     Html::VRef(Node::from(div)) // 将 HTML 内容包装为 Yew 的 VNode
                 } else {

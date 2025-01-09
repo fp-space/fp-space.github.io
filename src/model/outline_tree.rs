@@ -103,11 +103,12 @@ impl OutlineTree for TitleNode {
 
 }
 
-use std::io::{self, Read};
+use std::io::{self};
 use std::fs;
 use pulldown_cmark::{Options, Parser};
 use regex::Regex;
 
+#[warn(dead_code)]
 fn main() -> io::Result<()> {
     // 指定要读取的文件路径
     let file_path = "public/storage/StudyNotes/Java编程/07-云原生/02-kubernetes篇（新）.md"; // 替换为你的文件路径
