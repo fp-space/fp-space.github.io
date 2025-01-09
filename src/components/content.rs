@@ -1,3 +1,4 @@
+use std::cell::RefCell;
 use crate::components::script::render_mathjax;
 use crate::context::app_context::{AppStateAction, AppStateContext};
 use crate::model::outline_tree;
@@ -6,9 +7,10 @@ use outline_tree::TitleNode;
 use pulldown_cmark::{Options, Parser};
 use regex::Regex;
 use std::path::{Path, PathBuf};
+use std::rc::Rc;
 use std::string::String;
-use wasm_bindgen::prelude::wasm_bindgen;
-use wasm_bindgen::JsValue;
+use wasm_bindgen::prelude::{wasm_bindgen, Closure};
+use wasm_bindgen::{JsCast, JsValue};
 use wasm_bindgen_futures::spawn_local;
 use web_sys::Node;
 use yew::prelude::*;
@@ -97,8 +99,10 @@ pub fn main_content() -> Html {
 
     html! {
     <div class="markdown-content prose prose-lg max-w-screen-2xl mx-auto prose-p:overflow-x-auto prose-p:overflow-y-hidden">
-            {
-                // 使用 .get() 方法借用 markdown_html 的值
+        <div>
+            <h1 id="mini-note-top"></h1>
+        </div>
+        {
                 if !(*markdown_html).is_empty() {
                     let div = web_sys::window()
                         .unwrap()
