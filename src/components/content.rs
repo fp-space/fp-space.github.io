@@ -103,7 +103,6 @@ pub fn main_content() -> Html {
             <h1 id="mini-note-top"></h1>
         </div>
         {
-                // 使用 .get() 方法借用 markdown_html 的值
                 if !(*markdown_html).is_empty() {
                     let div = web_sys::window()
                         .unwrap()
