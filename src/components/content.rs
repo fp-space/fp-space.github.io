@@ -99,7 +99,10 @@ pub fn main_content() -> Html {
 
     html! {
     <div class="markdown-content prose prose-lg max-w-screen-2xl mx-auto prose-p:overflow-x-auto prose-p:overflow-y-hidden">
-            {
+        <div>
+            <h1 id="mini-note-top"></h1>
+        </div>
+        {
                 // 使用 .get() 方法借用 markdown_html 的值
                 if !(*markdown_html).is_empty() {
                     let div = web_sys::window()
@@ -109,30 +112,6 @@ pub fn main_content() -> Html {
                         .create_element("div")
                         .unwrap();
                     div.set_inner_html(&*markdown_html); // 使用借用的值
-
-      // 使用 use_effect 在内容渲染后打印 "hello"
-                {
-                    let markdown_html = markdown_html.clone();
-                    use_effect(move || {
-                        let window = web_sys::window().unwrap();
-
-                        // 创建一个闭包并将其包装为 js_sys::Function
-                        let closure = Closure::<dyn FnMut(f64)>::new(move |_| {
-                            web_sys::console::log_1(&JsValue::from_str("hello"));
-                        });
-
-                        // 将闭包的所有权绑定到 Rc<RefCell>，确保生命周期延长
-                        let closure_rc = Rc::new(RefCell::new(closure));
-
-                        // 调用 request_animation_frame
-                        window.request_animation_frame(closure_rc.borrow().as_ref().unchecked_ref()).unwrap();
-
-                        // 保持闭包的生命周期，避免被提前释放
-                        let _ = closure_rc; // 延长 closure_rc 的生命周期
-
-                        || {}
-                    });
-                }
 
                     Html::VRef(Node::from(div)) // 将 HTML 内容包装为 Yew 的 VNode
                 } else {

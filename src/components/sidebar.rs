@@ -85,6 +85,8 @@ fn tab_content(props: &TabContentProps) -> Html {
     let class = if props.active { "tab-content active" } else { "tab-content hidden" };
 
     html! {
+
+
         <div class={class}>
             { props.children.clone() }
         </div>
@@ -232,12 +234,21 @@ fn render_file_node(file_node: &FileNode, app_state_ctx: &AppStateContext, expan
             <div class="file-node-header" onclick={toggle}>
                 {
                     if file_node.is_dir {
-                        html! { <FolderIcon used={is_expanded} /> }
+                        html! {
+                            <div>
+                                <FolderIcon used={is_expanded} />
+                                <span class="file-node-name">{ &file_node.name }</span>
+                            </div>
+                        }
                     } else {
-                        html! { <FileIcon /> }
+                        html! {
+                            <div>
+                                <FileIcon />
+                                  <span><a href="#mini-note-top">{ &file_node.name }</a></span>
+                            </div>
+                        }
                     }
                 }
-                <span class="file-node-name">{ &file_node.name }</span>
             </div>
 
             {
