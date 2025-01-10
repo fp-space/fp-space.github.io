@@ -8,7 +8,7 @@ use std::rc::Rc;
 use wasm_bindgen_futures::spawn_local;
 use yew::prelude::*;
 
-#[derive(PartialEq, Clone)] // 为 Tab 枚举实现 Clone trait
+#[derive(PartialEq, Clone)]
 enum Tab {
     File,
     Outline
@@ -21,13 +21,13 @@ pub fn sidebar() -> Html {
     let switch_tab = |tab: Tab| {
         let active_tab = active_tab.clone();
         Callback::from(move |_: MouseEvent| {
-            active_tab.set(tab.clone()); // 现在可以调用 clone 方法
+            active_tab.set(tab.clone());
         })
     };
 
     html! {
-        <div class="sidebar bg-gray-100 h-screen flex flex-col">
-            <div class="sidebar-tabs flex border-b border-gray-200">
+        <div class="sidebar">
+            <div class="sidebar-tabs">
                 <TabButton 
                     active={*active_tab == Tab::File} 
                     label="文件" 
@@ -40,7 +40,7 @@ pub fn sidebar() -> Html {
                 />
             </div>
 
-            <div class="sidebar-view flex-1 overflow-y-auto">
+            <div class="sidebar-view">
                 <TabContent active={*active_tab == Tab::File}>
                     <FileView />
                 </TabContent>
@@ -62,9 +62,9 @@ struct TabButtonProps {
 #[function_component(TabButton)]
 fn tab_button(props: &TabButtonProps) -> Html {
     let class = if props.active {
-        "sidebar-tab active bg-blue-500 text-white"
+        "sidebar-tab active"
     } else {
-        "sidebar-tab bg-gray-200 text-gray-700"
+        "sidebar-tab"
     };
 
     html! {
@@ -82,11 +82,9 @@ struct TabContentProps {
 
 #[function_component(TabContent)]
 fn tab_content(props: &TabContentProps) -> Html {
-    let class = if props.active { "tab-content active" } else { "tab-content hidden" };
+    let class = if props.active { "tab-content active" } else { "tab-content" };
 
     html! {
-
-
         <div class={class}>
             { props.children.clone() }
         </div>
@@ -102,8 +100,8 @@ fn outline_view() -> Html {
     let render_outline = outline_data.iter().map(|root| render_outline_node(root.clone(), &expanded_state)).collect::<Html>();
 
     html! {
-        <div class="sidebar-content p-4">
-            <div class="outline-tree space-y-2">
+        <div class="sidebar-content">
+            <div class="outline-tree">
                 { render_outline }
             </div>
         </div>
@@ -145,7 +143,7 @@ fn render_outline_node(
 fn render_toggle_button(is_expanded: bool, has_children: bool) -> Html {
     if has_children {
         html! {
-            <span class="outline-node-toggle cursor-pointer transition-transform duration-300 transform">
+            <span class="outline-node-toggle">
                 <i class={if is_expanded { "fas fa-chevron-down" } else { "fas fa-chevron-right" }}></i>
             </span>
         }
@@ -195,12 +193,12 @@ fn file_view() -> Html {
 
     let render_tree = match &*file_tree {
         Some(tree) => tree.iter().map(|node| render_file_node(node, &app_state_ctx, expanded_state.clone())).collect::<Html>(),
-        None => html! { <div class="p-4">{"Loading..."}</div> },
+        None => html! { <div class="loading">{"Loading..."}</div> },
     };
 
     html! {
-        <div class="sidebar-content p-4">
-            <div class="outline-tree space-y-2">
+        <div class="sidebar-content">
+            <div class="file-tree">
                 { render_tree }
             </div>
         </div>
@@ -235,16 +233,16 @@ fn render_file_node(file_node: &FileNode, app_state_ctx: &AppStateContext, expan
                 {
                     if file_node.is_dir {
                         html! {
-                            <div>
+                            <div class="file-node-folder">
                                 <FolderIcon used={is_expanded} />
                                 <span class="file-node-name">{ &file_node.name }</span>
                             </div>
                         }
                     } else {
                         html! {
-                            <div>
+                            <div class="file-node-file">
                                 <FileIcon />
-                                  <span><a href="#mini-note-top">{ &file_node.name }</a></span>
+                                <span class="file-node-name"><a href="#mini-note-top">{ &file_node.name }</a></span>
                             </div>
                         }
                     }
