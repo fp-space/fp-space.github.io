@@ -28,10 +28,10 @@ fn generate_file_tree(dir: &str, exclude_dirs: Vec<&str>, include_files: Vec<&st
     let mut root_node = TreeNode::<FileNode>::new(FileNode {
         name: root_name,
         is_dir: true,
-        path: root_path.to_string_lossy().to_string(),
-        file_type: "folder".to_string(),
-        create_time: get_metadata_time(&root_path, true),
-        modify_time: get_metadata_time(&root_path, false),
+        path: Some(root_path.to_string_lossy().to_string()),
+        file_type: Some("folder".to_string()),
+        create_time: Some(get_metadata_time(&root_path, true)),
+        modify_time: Some(get_metadata_time(&root_path, false)),
     });
 
     // 递归遍历目录
@@ -55,10 +55,10 @@ fn generate_file_tree(dir: &str, exclude_dirs: Vec<&str>, include_files: Vec<&st
             let file_node = FileNode {
                 name: file_name.clone(),
                 is_dir: false,
-                path: path.as_path().to_string_lossy().to_string(),
-                file_type: file_extension,
-                create_time: get_metadata_time(&path, true),
-                modify_time: get_metadata_time(&path, false),
+                path: Some(path.as_path().to_string_lossy().to_string()),
+                file_type: Some(file_extension),
+                create_time: Some(get_metadata_time(&path, true)),
+                modify_time: Some(get_metadata_time(&path, false)),
             };
 
             root_node.add_child(TreeNode::new(file_node));
@@ -99,5 +99,5 @@ fn main() {
     let file_tree = generate_file_tree(dir, exclude_dirs, include_files);
 
     // 将文件树写入 JSON 文件
-    write_file_tree_to_json(&file_tree, "file_tree.json");
+    write_file_tree_to_json(&file_tree, "public/file_tree.json");
 }
