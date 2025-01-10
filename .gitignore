@@ -6,6 +6,5 @@
 /node_modules/**
 styles/app.css
 ./package-lock.json
-/public/storage/
-/public/file_tree.json
+/public/*
 Cargo.lock
