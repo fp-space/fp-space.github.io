@@ -1,18 +1,17 @@
-use std::cell::RefCell;
 use crate::components::icon::{FileIcon, FolderIcon};
 use crate::context::app_context::{AppStateAction, AppStateContext};
 use crate::model::file_tree::FileNode;
 use crate::model::outline_tree::{sanitize_title, TitleNode};
+use crate::model::tree::TreeNode;
 use std::collections::HashMap;
-use std::rc::Rc;
 use wasm_bindgen_futures::spawn_local;
 use yew::prelude::*;
-use crate::model::tree::TreeNode;
 
+// Tabs enum for the sidebar
 #[derive(PartialEq, Clone)]
 enum Tab {
     File,
-    Outline
+    Outline,
 }
 
 #[function_component(Sidebar)]
@@ -29,15 +28,15 @@ pub fn sidebar() -> Html {
     html! {
         <div class="sidebar">
             <div class="sidebar-tabs">
-                <TabButton 
-                    active={*active_tab == Tab::File} 
-                    label="文件" 
-                    onclick={switch_tab(Tab::File)} 
+                <TabButton
+                    active={*active_tab == Tab::File}
+                    label="文件"
+                    onclick={switch_tab(Tab::File)}
                 />
-                <TabButton 
-                    active={*active_tab == Tab::Outline} 
-                    label="大纲" 
-                    onclick={switch_tab(Tab::Outline)} 
+                <TabButton
+                    active={*active_tab == Tab::Outline}
+                    label="大纲"
+                    onclick={switch_tab(Tab::Outline)}
                 />
             </div>
 
@@ -53,6 +52,7 @@ pub fn sidebar() -> Html {
     }
 }
 
+// TabButton component
 #[derive(Properties, PartialEq)]
 struct TabButtonProps {
     active: bool,
@@ -75,6 +75,7 @@ fn tab_button(props: &TabButtonProps) -> Html {
     }
 }
 
+// TabContent component
 #[derive(Properties, PartialEq)]
 struct TabContentProps {
     active: bool,
@@ -92,13 +93,15 @@ fn tab_content(props: &TabContentProps) -> Html {
     }
 }
 
+// OutlineView component
 #[function_component(OutlineView)]
 fn outline_view() -> Html {
     let app_state_ctx = use_context::<AppStateContext>().unwrap();
     let expanded_state = use_state(|| HashMap::<String, bool>::new());
     let outline_data = app_state_ctx.outline.clone().unwrap_or_default();
 
-    let render_outline = outline_data.iter().map(|root| render_outline_node(root.clone(), &expanded_state)).collect::<Html>();
+    // 遍历根节点并渲染
+    let render_outline = outline_data.iter().map(|node| render_outline_node(&node.clone(), &expanded_state)).collect::<Html>();
 
     html! {
         <div class="sidebar-content">
@@ -109,12 +112,12 @@ fn outline_view() -> Html {
     }
 }
 
+// 渲染单个 outline 节点
 fn render_outline_node(
-    node: Rc<RefCell<TitleNode>>,
+    tree_node: &TreeNode<TitleNode>, // 这里传入的是单个 TreeNode
     expanded_state: &UseStateHandle<HashMap<String, bool>>
 ) -> Html {
-    let node_ref = node.borrow_mut();
-    let title = node_ref.title.clone();
+    let title = tree_node.data.title.clone();
     let is_expanded = expanded_state.get(&title).cloned().unwrap_or(false);
 
     let toggle = {
@@ -134,13 +137,14 @@ fn render_outline_node(
                 <span class="outline-node-name">
                     <a href={format!("#{}", sanitize_title(&title))}>{title}</a>
                 </span>
-                { render_toggle_button(is_expanded, node_ref.has_children) }
+                { render_toggle_button(is_expanded, tree_node.has_children) }
             </div>
-            { render_children(is_expanded, &node_ref.children, expanded_state) }
+            { render_children(is_expanded, &tree_node.children, expanded_state) }
         </div>
     }
 }
 
+// 渲染展开/折叠按钮
 fn render_toggle_button(is_expanded: bool, has_children: bool) -> Html {
     if has_children {
         html! {
@@ -153,17 +157,20 @@ fn render_toggle_button(is_expanded: bool, has_children: bool) -> Html {
     }
 }
 
+// 渲染子节点
 fn render_children(
     is_expanded: bool,
-    children: &Vec<Rc<RefCell<TitleNode>>>,
+    children: &Option<Vec<TreeNode<TitleNode>>>,
     expanded_state: &UseStateHandle<HashMap<String, bool>>
 ) -> Html {
     if is_expanded {
         html! {
             <div class="outline-node-children">
                 {
-                    children.iter()
-                        .map(|child| render_outline_node(child.clone(), expanded_state))
+                    children.as_ref()
+                        .unwrap_or(&vec![])
+                        .iter()
+                        .map(|child| render_outline_node(child, expanded_state)) // 渲染每个子节点
                         .collect::<Html>()
                 }
             </div>
@@ -173,12 +180,15 @@ fn render_children(
     }
 }
 
+
+// FileView component
 #[function_component(FileView)]
 fn file_view() -> Html {
     let file_tree = use_state(|| None);
     let expanded_state = use_state(|| HashMap::<String, bool>::new());
     let app_state_ctx = use_context::<AppStateContext>().unwrap();
 
+    // Fetch file tree data on mount
     {
         let file_tree = file_tree.clone();
         use_effect(move || {
@@ -192,6 +202,7 @@ fn file_view() -> Html {
         });
     }
 
+    // Render file tree
     let render_tree = match &*file_tree {
         Some(tree) => tree.iter().map(|node| render_file_node(node, &app_state_ctx, expanded_state.clone())).collect::<Html>(),
         None => html! { <div class="loading">{"Loading..."}</div> },
@@ -206,6 +217,7 @@ fn file_view() -> Html {
     }
 }
 
+// Renders file node recursively
 fn render_file_node(tree_node: &TreeNode<FileNode>, app_state_ctx: &AppStateContext, expanded_state: UseStateHandle<HashMap<String, bool>>) -> Html {
     let file_node = tree_node.clone().data;
     let file_name = file_node.name.clone();

@@ -20,11 +20,19 @@ pub struct FileNode {
     pub modify_time: Option<String>,// 文件修改时间
 }
 
+// 定义一个全局的文件树，用于存储文件的目录结构
+static GLOBAL_FILE_TREE: Lazy<Arc<Mutex<Option<TreeNode<FileNode>>>>> = Lazy::new(|| {
+    Arc::new(Mutex::new(None))  // 先将数据初始化为空，稍后加载 JSON 数据
+});
+
 impl FileNode {
 
     // 通过 load_data 函数初始化数据
     pub(crate) async fn load_tree_data() -> Vec<TreeNode<FileNode>>{
-        Self::fetch_file_tree("/public/file_tree.json".parse().unwrap()).await.unwrap();
+
+        if GLOBAL_FILE_TREE.lock().unwrap().clone().is_none(){
+            Self::fetch_file_tree("/public/file_tree.json".parse().unwrap()).await.unwrap();
+        }
         let result = GLOBAL_FILE_TREE.lock().unwrap().clone();
         vec![result.unwrap()]
     }
@@ -59,10 +67,7 @@ impl FileNode {
 
         Ok(())
     }
-
-
 }
-
 
 impl Display for FileNode {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
@@ -78,10 +83,3 @@ impl Display for FileNode {
         write!(f, "}}")
     }
 }
-
-// 定义一个全局的文件树，用于存储文件的目录结构
-pub static GLOBAL_FILE_TREE: Lazy<Arc<Mutex<Option<TreeNode<FileNode>>>>> = Lazy::new(|| {
-    Arc::new(Mutex::new(None))  // 先将数据初始化为空，稍后加载 JSON 数据
-});
-
-

@@ -1,17 +1,17 @@
 // 应用的全局上下文（例如主题管理、用户状态）
 
-use std::cell::RefCell;
 use crate::model::file_tree::FileNode;
 use crate::model::outline_tree::TitleNode;
 use serde::{Deserialize, Serialize};
 use std::rc::Rc;
 use yew::{function_component, html, use_reducer, ContextProvider, Html, Properties, Reducible, UseReducerHandle};
+use crate::model::tree::TreeNode;
 
 #[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AppState {
     pub selected_file: Option<FileNode>,
     #[serde(skip)]  // 跳过该字段的反序列化
-    pub outline: Option<Vec<Rc<RefCell<TitleNode>>>>,
+    pub outline: Option<Vec<TreeNode<TitleNode>>>,
 }
 
 
@@ -19,7 +19,7 @@ pub struct AppState {
 #[derive(Debug, Clone)]
 pub enum AppStateAction {
     UpdateSelectedFile(Option<FileNode>),
-    UpdateUserStatus(Option<Vec<Rc<RefCell<TitleNode>>>>),
+    UpdateUserStatus(Option<Vec<TreeNode<TitleNode>>>),
 }
 
 impl Reducible for AppState {

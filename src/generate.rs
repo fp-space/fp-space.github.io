@@ -42,10 +42,14 @@ fn generate_file_tree(dir: &str, exclude_dirs: Vec<&str>, include_files: Vec<&st
         let is_dir = entry.file_type().unwrap().is_dir();
         let is_file = entry.file_type().unwrap().is_file();
 
-        // 如果路径是一个目录且被排除，则跳过
-        if is_dir && exclude_dirs.iter().any(|&dir| path.file_name().unwrap() == dir) {
-            continue;
+        // 排序目录
+        if let Some(file_name) = path.file_name().and_then(|name| name.to_str()) {
+            // 如果路径是一个目录且被排除，则跳过
+            if is_dir && (exclude_dirs.iter().any(|&dir| file_name == dir) || file_name.starts_with(".")) {
+                continue;
+            }
         }
+
 
         // 如果是文件且符合条件，则加入到文件树中
         if is_file && is_valid_file(&path, &include_files) {
