@@ -1,20 +1,18 @@
-use std::cell::RefCell;
 use crate::components::script::render_mathjax;
 use crate::context::app_context::{AppStateAction, AppStateContext};
 use crate::model::outline_tree;
+use crate::model::outline_tree::OutlineTree;
 use gloo_net::http::Request;
 use outline_tree::TitleNode;
 use pulldown_cmark::{Options, Parser};
 use regex::Regex;
 use std::path::{Path, PathBuf};
-use std::rc::Rc;
 use std::string::String;
-use wasm_bindgen::prelude::{wasm_bindgen, Closure};
-use wasm_bindgen::{JsCast, JsValue};
+use wasm_bindgen::prelude::wasm_bindgen;
+use wasm_bindgen::JsValue;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::Node;
 use yew::prelude::*;
-use crate::model::outline_tree::OutlineTree;
 
 #[wasm_bindgen]
 extern "C" {
@@ -89,10 +87,13 @@ pub fn main_content() -> Html {
     // 更新 markdown_file_path
     if let Some(app_state_ctx) = app_state_ctx {
         if let Some(ref file_node) = app_state_ctx.selected_file {
-            // 如果文件路径变化才更新
-            if *markdown_file_path != file_node.path {
-                markdown_file_path.set(file_node.path.clone()); // 更新文件路径
-                web_sys::console::log_1(&JsValue::from_str(&format!("Selected File: {}", file_node.to_string())));
+
+            if let Some(path) = file_node.clone().path {
+                // 如果文件路径变化才更新
+                if *markdown_file_path != path {
+                    markdown_file_path.set(path); // 更新文件路径
+                    web_sys::console::log_1(&JsValue::from_str(&format!("Selected File: {}", file_node.to_string())));
+                }
             }
         }
     }

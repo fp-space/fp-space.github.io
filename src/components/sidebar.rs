@@ -7,6 +7,7 @@ use std::collections::HashMap;
 use std::rc::Rc;
 use wasm_bindgen_futures::spawn_local;
 use yew::prelude::*;
+use crate::model::tree::TreeNode;
 
 #[derive(PartialEq, Clone)]
 enum Tab {
@@ -205,7 +206,8 @@ fn file_view() -> Html {
     }
 }
 
-fn render_file_node(file_node: &FileNode, app_state_ctx: &AppStateContext, expanded_state: UseStateHandle<HashMap<String, bool>>) -> Html {
+fn render_file_node(tree_node: &TreeNode<FileNode>, app_state_ctx: &AppStateContext, expanded_state: UseStateHandle<HashMap<String, bool>>) -> Html {
+    let file_node = tree_node.clone().data;
     let file_name = file_node.name.clone();
     let is_expanded = expanded_state.get(&file_name).cloned().unwrap_or(false);
 
@@ -254,7 +256,7 @@ fn render_file_node(file_node: &FileNode, app_state_ctx: &AppStateContext, expan
                     html! {
                         <div class="file-node-children">
                             {
-                                file_node.children.as_ref()
+                                tree_node.children.as_ref()
                                     .unwrap_or(&vec![])
                                     .iter()
                                     .map(|child| render_file_node(child, app_state_ctx, expanded_state.clone()))

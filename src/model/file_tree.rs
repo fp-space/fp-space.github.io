@@ -7,25 +7,23 @@ use std::sync::{Arc, Mutex};
 use wasm_bindgen::{JsCast, JsValue};
 use wasm_bindgen_futures::JsFuture;
 use web_sys::{Request, RequestInit, Response};
+use crate::model::tree::TreeNode;
 
 // 定义文件节点结构体
 #[derive(Clone, PartialEq, Debug, Serialize, Deserialize,Eq)]
 pub struct FileNode {
     pub name: String,               // 文件或目录名称
     pub is_dir: bool,               // 是否为文件夹
-    pub children: Option<Vec<FileNode>>, // 子目录，若为文件，则为 None
-    pub path: String,               // 文件路径
-    pub file_type: String,          // 文件类型（如 .md, .txt）
-    pub create_time: String,        // 文件创建时间
-    pub modify_time: String,        // 文件修改时间
-    #[serde(default)]
-    pub is_expanded: bool,          // 是否展开
+    pub path: Option<String>,       // 文件路径（对于文件夹可以为 None）
+    pub file_type: Option<String>,  // 文件类型（如 .md, .txt）
+    pub create_time: Option<String>,// 文件创建时间
+    pub modify_time: Option<String>,// 文件修改时间
 }
 
 impl FileNode {
 
     // 通过 load_data 函数初始化数据
-    pub(crate) async fn load_tree_data() -> Vec<FileNode>{
+    pub(crate) async fn load_tree_data() -> Vec<TreeNode<FileNode>>{
         Self::fetch_file_tree("/public/file_tree.json".parse().unwrap()).await.unwrap();
         let result = GLOBAL_FILE_TREE.lock().unwrap().clone();
         vec![result.unwrap()]
@@ -52,7 +50,7 @@ impl FileNode {
 
         // 获取响应体并将其转为 JSON 数据
         let json = JsFuture::from(response.json()?).await?;
-        let file_tree: FileNode = from_value(json)?;
+        let file_tree: TreeNode<FileNode> = from_value(json)?;
 
         print!("{:?}", file_tree);
         // 将解析后的文件树保存到全局变量中
@@ -71,29 +69,18 @@ impl Display for FileNode {
         // Display 文件基本信息
         write!(f, "FileNode {{\n")?;
         write!(f, "  Name: {}\n", self.name)?;
-        write!(f, "  Path: {}\n", self.path)?;
-        write!(f, "  File Type: {}\n", self.file_type)?;
-        write!(f, "  Created: {}\n", self.create_time)?;
-        write!(f, "  Modified: {}\n", self.modify_time)?;
+        write!(f, "  Path: {:?}\n", self.path)?;
+        write!(f, "  File Type: {:?}\n", self.file_type)?;
+        write!(f, "  Created: {:?}\n", self.create_time)?;
+        write!(f, "  Modified: {:?}\n", self.modify_time)?;
         write!(f, "  Is Directory: {}\n", self.is_dir)?;
-        write!(f, "  Is Expanded: {}\n", self.is_expanded)?;
-
-        // 如果是目录，并且有子节点，递归展示子目录
-        if let Some(children) = &self.children {
-            write!(f, "  Children:\n")?;
-            for child in children {
-                write!(f, "    {}\n", child)?;
-            }
-        } else {
-            write!(f, "  No children\n")?;
-        }
 
         write!(f, "}}")
     }
 }
 
 // 定义一个全局的文件树，用于存储文件的目录结构
-pub static GLOBAL_FILE_TREE: Lazy<Arc<Mutex<Option<FileNode>>>> = Lazy::new(|| {
+pub static GLOBAL_FILE_TREE: Lazy<Arc<Mutex<Option<TreeNode<FileNode>>>>> = Lazy::new(|| {
     Arc::new(Mutex::new(None))  // 先将数据初始化为空，稍后加载 JSON 数据
 });
 
