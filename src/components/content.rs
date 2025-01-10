@@ -98,7 +98,7 @@ pub fn main_content() -> Html {
     }
 
     html! {
-    <div class="markdown-content prose prose-lg max-w-screen-2xl mx-auto prose-p:overflow-x-auto prose-p:overflow-y-hidden">
+    <div class="markdown-content">
         <div>
             <h1 id="mini-note-top"></h1>
         </div>
