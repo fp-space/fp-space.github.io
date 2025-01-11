@@ -205,7 +205,7 @@ fn file_view() -> Html {
     // Render file tree
     let render_tree = match &*file_tree {
         Some(tree) => tree.iter().map(|node| render_file_node(node, &app_state_ctx, expanded_state.clone())).collect::<Html>(),
-        None => html! { <div class="loading">{"Loading..."}</div> },
+        None => html! { <div class="loading">{""}</div> },
     };
 
     html! {

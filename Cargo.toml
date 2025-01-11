@@ -23,7 +23,7 @@ chrono = "0.4.39"
 once_cell = "1.20.2"
 serde-wasm-bindgen = "0.6.5"
 console = "0.15.8"
-pulldown-cmark = "0.9"
+pulldown-cmark = "0.12.2"
 regex = "1.11.1"  # 用于解析 Markdown
 
 ## 定义多个二进制目标
@@ -34,7 +34,3 @@ path = "src/generate.rs"
 [[bin]]
 name = "main"
 path = "src/main.rs"
-
-[[bin]]
-name = "outline_tree"
-path = "src/model/outline_tree.rs"

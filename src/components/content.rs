@@ -115,7 +115,7 @@ pub fn main_content() -> Html {
 
                     Html::VRef(Node::from(div)) // 将 HTML 内容包装为 Yew 的 VNode
                 } else {
-                    html! { <p>{ "Loading..." }</p> }
+                    html! { <p>{ "" }</p> }
                 }
             }
         </div>
