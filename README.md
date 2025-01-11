@@ -38,9 +38,7 @@ cargo run --bin generate
 
 ## 需求 & 问题
 
-### v 0.0.1
-遗留问题：latex语法渲染问题
-
-需求问题：
 1. github actions 部署 
 2. 样式布局整理
+3. latex 语法渲染问题，序号不对
+4. 文件树排序问题
