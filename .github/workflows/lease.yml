@@ -28,6 +28,7 @@ jobs:
     - name: 下载依赖
       run: |
         cargo build
+        cargo install trunk
     
     - name: 构建项目
       run: trunk build --release
