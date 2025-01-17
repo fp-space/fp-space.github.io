@@ -1,0 +1,52 @@
+name: Create Release
+
+on:
+  push: # 触发条件：当推送v开头的标签时触发
+    tags:
+      - 'v*'
+  workflow_dispatch: # 手动触发工作流
+    inputs:
+      tag_version:
+        description: "Tag Version"  # 输入描述：标签版本
+        required: true  # 必填项
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    permissions:
+      id-token: write
+      contents: write
+      attestations: write
+
+    steps:
+    - name: 拉取代码
+      uses: actions/checkout@v4
+
+    - name: 配置 Rust
+      uses: moonrepo/setup-rust@v1
+    
+    - name: 下载依赖
+      run: |
+        cargo build
+    
+    - name: 构建项目
+      run: trunk build --release
+
+    - name: 设置版本
+      id: version
+      uses: ./.github/actions/setup-version
+
+    - name: 生成 SHA-256 校验码
+      run: shasum -a 256 ./target/wasm32-unknown-unknown/release/main.wasm > ./target/wasm32-unknown-unknown/release/main.wasm.sha256
+
+    - name: 创建 GitHub Release
+      if: github.ref_type == 'tag' || github.event.inputs.tag_version != ''
+      uses: softprops/action-gh-release@v2
+      with:
+        name: v${{ steps.version.outputs.APP_VERSION }}
+        draft: false
+        prerelease: true
+        tag_name: v${{ steps.version.outputs.APP_VERSION }}
+        files: |
+          ./target/wasm32-unknown-unknown/release/main.wasm
+          ./target/wasm32-unknown-unknown/release/main.wasm.sha256
